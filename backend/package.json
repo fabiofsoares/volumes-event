@@ -1,0 +1,28 @@
+{
+  "name": "volumes-event",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabiofsoares/volumes-event.git"
+  },
+  "author": "Fabio Ferreira Soares",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.3.10",
+    "path": "^0.12.7"
+  },
+  "bugs": {
+    "url": "https://github.com/fabiofsoares/volumes-event/issues"
+  },
+  "homepage": "https://github.com/fabiofsoares/volumes-event#readme"
+}
