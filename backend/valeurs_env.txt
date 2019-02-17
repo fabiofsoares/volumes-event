@@ -1,3 +1,6 @@
+Il faut créer un fichier .env
+et tu mets ces valeurs ci bas
+
 PORT = 3000
 HOST = 127.0.0.1
 MONGO_URL = mongodb://127.0.0.1:27017/volumes-event
