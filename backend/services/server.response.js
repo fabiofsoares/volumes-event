@@ -34,7 +34,6 @@ const sendApiErrorResponse = (response, errorMessage, error) => {
 }
 // 
 
-
 /*
 Export service fonctions
 */
