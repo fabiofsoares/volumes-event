@@ -4,6 +4,9 @@
 const { Router }            = require('express');
 const UserRouterClass       = require('./user/user.routes');
 
+const passport = require('passport');
+const { setAuthentication } = require('../services/authentication');
+setAuthentication(passport);
 
 /*
 Define routers

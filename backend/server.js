@@ -4,6 +4,7 @@
                           require('dotenv').config();
 const express           = require('express');
 const bodyParser        = require('body-parser');
+const cookieParser      = require('cookie-parser');
 
 const { mainRouter }    = require('./routes/main.router');
 
@@ -15,10 +16,8 @@ const host = process.env.HOST;
 const server = express();
 const db = require('./services/db');
 
-
-
 /*
-    Server
+    Server 
 */
 const init = () => {
 
@@ -28,6 +27,9 @@ const init = () => {
     //Body-parser
     server.use(bodyParser.json({limit: '10mb'}));
     server.use(bodyParser.urlencoded({ extended: true }));
+
+    //Cookie
+    server.use(cookieParser(process.env.COOKIE_SECRET));
     
     // Router
     server.use('/', mainRouter);

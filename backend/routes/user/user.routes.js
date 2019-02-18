@@ -1,6 +1,8 @@
 const express                   = require('express');
 const userRouter                = express.Router({ mergeParams: true });
-const { register, login }       = require('./user.controller');
+const { register, login, read }       = require('./user.controller');
+const { sendBodyError, sendFieldsError, sendApiSuccessResponse, sendApiErrorResponse } = require('../../services/server.response');
+const { checkFields } = require('../../services/request.checker');
 
 
 class UserRouterClass {
@@ -13,21 +15,45 @@ class UserRouterClass {
 
         // Register
         userRouter.post('/register', (req, res) => {
-            // Use controller function
-            
-            register(req.body)
-            //.then( apiResponse => res.json(apiResponse) )
-            //.catch( apiResponse => res.json(apiResponse) )
+            // Error: no body present
+            if (typeof req.body === 'undefined' || req.body === null) { sendBodyError(res, 'No body data provided') }
+            // Check fields in the body
+            const { miss, extra, ok } = checkFields(['email', 'password', 'first_name', 'last_name'], req.body);
+            //=> Error: bad fields provided
+            if (!ok) { sendFieldsError(res, 'Bad fields provided', miss, extra) }
+            //=> Request is valid: use controller
+            else{
+                register(req.body, res)
+                .then( apiResponse => sendApiSuccessResponse(res, 'User is registrated', apiResponse) )
+                .catch( apiResponse => sendApiErrorResponse(res, 'Error during user registration', apiResponse))
+            }
         });
 
         // Login
         userRouter.post('/login', (req, res) => {
-            // Use controller function
-            //console.log('REQ : ', req.body)
-            login(req.body)
-            //.then( apiResponse => res.json(apiResponse) )
-            //.catch( apiResponse => res.json(apiResponse) )
+             // Error: no body present
+             if (typeof req.body === 'undefined' || req.body === null) { sendBodyError(res, 'No body data provided') }
+             // Check fields in the body
+             const { miss, extra, ok } = checkFields(['email', 'password'], req.body);
+             //=> Error: bad fields provided
+             if (!ok) { sendFieldsError(res, 'Bad fields provided', miss, extra) }
+             //=> Request is valid: use controller
+             else{
+                 login(req.body, req, res)
+                 .then( apiResponse => sendApiSuccessResponse(res, 'User is logged', apiResponse) )
+                 .catch( apiResponse => sendApiErrorResponse(res, 'Error during user login', apiResponse))
+             }
         });
+
+        //Read
+        userRouter.get( '/me', (req, res) => {
+
+            req.cookies['OTPBDtoken']
+
+            read(req.body)
+            .then( apiResponse => sendApiSuccessResponse(res, 'User is logged', apiResponse) )
+            .catch( apiResponse => sendApiErrorResponse(res, 'Error during user login', apiResponse))
+        })
 
         
     };

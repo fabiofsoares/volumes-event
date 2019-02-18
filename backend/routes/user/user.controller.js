@@ -5,61 +5,65 @@ const UserModel = require('../../models/user.model');
 const bcrypt = require('bcryptjs');
 //
 
-const register = body => {
-    
+const register = (body, res) => {
+
     return new Promise( (resolve, reject) => {
-        UserModel.findOne({ email: body.email }, (error, user) => {
-            if(error){ // Mongo Error
-                return reject(error)
-            }
-            else if(user){ // User already exist
-                return reject(user)
-            }
-            else{ // Register new user
-                // Crypt password
-                bcrypt.hash(body.password, 10)
-                .then( hashedPassword => {
-                    console.log(hashedPassword)
-                    // Replace clear password
+
+        UserModel.findOne( { email: body.email }, (error, user) => {
+            if(error) return reject(error) // Mongo Error
+            else if(user) return reject('User already exist')
+            else{
+                // Hash user password
+                bcrypt.hash( body.password, 10 )
+                .then( hashedPassword => {  
+                    // Change user pasword
                     body.password = hashedPassword;
 
-                    // Save user
-                    UserModel.create(body, (error, newUser) => {
-                        if(error){ // Mongo error
-                            return reject(error)
-                        }
-                        else{ // User registrated
-                            return resolve(newUser);
-                        };
-                    });
+                    // Register new user
+                    UserModel.create(body)
+                    .then( mongoResponse => resolve(mongoResponse) )
+                    .catch( mongoResponse => reject(mongoResponse) )
                 })
-                .catch( hashError => {
-                    console.log('error', hashError)
-                    return reject(hashError);
-                });
+                .catch( hashError => reject(hashError) );
             };
         });
+        
     });
 };
 
-const login = body => {
+const login = (body, req, res) => {
 
-    return new Promise( (resolve, reject ) => {
-        UserModel.findOne( { email: body.email }, (error, user) => {
+    return new Promise( (resolve, reject) => {
+        UserModel.findOne( {email: body.email}, (error, user) =>{
             if(error) reject(error)
-            else if( !user ) reject('User not found')
+            else if(!user) reject('Unknow user')
             else{
                 // Check password
-                const validPassword = bcrypt.compareSync( body.password, user.password )
-
+                const validPassword = bcrypt.compareSync(body.password, user.password);
                 if( !validPassword ) reject('Password not valid')
-                else resolve({
-                    user: user,
-                    token: user.generateJwt()
-                })
+                else {
+                    // Set cookie
+                    res.cookie("OTPBDtoken", user.generateJwt(), { httpOnly: true });
+
+                    // Resolve user data
+                    resolve(user)
+                }
             }
-        })
+        } )
     })
+};
+
+const read = body => {
+    return new Promise( (resolve, reject) => {
+        console.log('test',body)
+        UserModel.findOne( { email: body.email }, (error, user) => {
+            if(error) reject(error) // Mongo Error
+            else {
+                return resolve(user)
+            };
+        });
+        
+    });
 };
 //
 
@@ -68,6 +72,7 @@ Export
 */
 module.exports = {
     register,
-    login
+    login,
+    read
 }
 //
