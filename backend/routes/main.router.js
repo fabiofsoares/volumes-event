@@ -3,6 +3,7 @@
 */
 const { Router }            = require('express');
 const UserRouterClass       = require('./user/user.routes');
+const EventRouterClass      = require('./event/event.routes')
 
 const passport = require('passport');
 const { setAuthentication } = require('../services/authentication');
@@ -17,6 +18,7 @@ Define routers
 
     // Child
     const userRouter        = new UserRouterClass();
+    const eventRouter       = new EventRouterClass({ passport });
 
 
 /*
@@ -24,6 +26,7 @@ Define routers
 */
     mainRouter.use('/api', apiRouter);
     apiRouter.use('/user', userRouter.init());
+    apiRouter.use('/event', eventRouter.init())
 
 
 
