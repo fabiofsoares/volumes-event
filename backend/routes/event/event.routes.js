@@ -5,7 +5,7 @@ const eventRouter = express.Router();
 
 const { sendBodyError, sendFieldsError, sendApiSuccessResponse, sendApiErrorResponse } = require('../../services/server.response');
 const { checkFields } = require('../../services/request.checker');
-const { createEvent, readEvents } = require('./event.controller');
+const { createEvent, readEvents, getEvent } = require('./event.controller');
 
 class EventRouterClass {
     
@@ -16,9 +16,14 @@ class EventRouterClass {
     routes() {
 
         eventRouter.get('/', (req, res) => {
-            console.log(' >>>> test events')
             readEvents()
             .then( apiResponse => sendApiSuccessResponse(res, 'Events received', apiResponse) )
+            .catch( apiResponse => sendApiErrorResponse(res, 'Error during fetch', apiResponse))
+        })
+
+        eventRouter.get('/:id', (req, res) => {
+            getEvent(req.params.id)
+            .then( apiResponse => sendApiSuccessResponse(res, 'Event received', apiResponse) )
             .catch( apiResponse => sendApiErrorResponse(res, 'Error during fetch', apiResponse))
         })
 
@@ -34,7 +39,7 @@ class EventRouterClass {
                 .then( apiResponse => sendApiSuccessResponse(res, 'Event is created', apiResponse) )
                 .catch( apiResponse => sendApiErrorResponse(res, 'Error during event creation', apiResponse))
             }
-        })
+        })        
     }
 
     init(){

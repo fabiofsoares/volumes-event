@@ -15,7 +15,8 @@ Model definition
         date_start: Date,
         date_finish: Date,
         name: String,
-        description: String
+        description: String,
+        status: String
     })
 //
 

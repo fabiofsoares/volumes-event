@@ -2,6 +2,8 @@
 const EventModel    = require('../../models/event.model')
 const UserModel     = require('../../models/user.model')
 
+//Event status
+const status = ['waiting', 'approuved', 'refused', 'canceled', 'deleted'];
 
 //Methods
 const createEvent = (body, userId) => {
@@ -12,7 +14,8 @@ const createEvent = (body, userId) => {
             date_start: body.date_start,
             date_finish: body.date_finish,
             name: body.name,
-            description: body.description
+            description: body.description,
+            status: status[1]
         }
 
         EventModel.create(newEvent)
@@ -39,8 +42,32 @@ const readEvents = () => {
     })
 }
 
+const getEvent = (id) => {
+    return new Promise( (resolve, reject) => {
+        EventModel.findById(id, (error, event) => {
+            if(error) reject(error)
+            else {
+                return resolve(event)
+            }
+        })
+    })
+}
+
+const changeEventStatus = (body, id) => {
+    return new Promise( (resolve, reject) => {
+    EventModel.findOneAndUpdate(id, {$set: {"status": status[body.status]}}, (error, event) => {
+            if(error) reject(error)
+            else {
+                return resolve(event)
+            }
+        })
+    })
+}
+
 //Export
 module.exports = {
     createEvent,
-    readEvents
+    readEvents,
+    getEvent,
+    changeEventStatus
 }
