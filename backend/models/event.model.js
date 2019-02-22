@@ -16,7 +16,10 @@ Model definition
         date_finish: Date,
         name: String,
         description: String,
-        status: String
+        status: String,
+        category: String,
+        cover: String, //Image -> il faut vérifier si c'est le bon type
+        place: String
     })
 //
 
