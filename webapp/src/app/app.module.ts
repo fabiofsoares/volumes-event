@@ -1,18 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+// Importer le module pour la gestion des routes
+import { RouterModule } from '@angular/router';
+
+// Imprter le router
+import { MainRouter } from './app-router';
+
+// Importer les modules pour la gestion des formulaire
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
+import { HomePageComponent } from './routes/home-page/home-page.component';
+import { SigninPageComponent } from './routes/signin-page/signin-page.component';
+import { LoginPageComponent } from './routes/login-page/login-page.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { MePageComponent } from './routes/me-page/me-page.component';
+import { EventsPageComponent } from './routes/events-page/events-page.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		HomePageComponent,
+		SigninPageComponent,
+		LoginPageComponent,
+		HeaderComponent,
+		MePageComponent,
+		EventsPageComponent
+	],
+	imports: [ BrowserModule, RouterModule.forRoot(MainRouter), FormsModule, ReactiveFormsModule, HttpClientModule ],
+	providers: [],
+	bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {}
