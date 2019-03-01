@@ -70,7 +70,6 @@ const getEvent = (id) => {
 };
 
 const changeEventStatus = (body, id) => {
-<<<<<<< HEAD
     return new Promise( (resolve, reject) => {
     EventModel.findOneAndUpdate(id, {$set: { status : _status[parseInt(body.status)]}}, (error, event) => {
             if(error) reject(error)
@@ -80,17 +79,6 @@ const changeEventStatus = (body, id) => {
         })
     })
 }
-=======
-	return new Promise((resolve, reject) => {
-		EventModel.findOneAndUpdate(id, { $set: { status: _status[body.status] } }, (error, event) => {
-			if (error) reject(error);
-			else {
-				return resolve(event);
-			}
-		});
-	});
-};
->>>>>>> 3a61c373b9f0019742093e76c872e301f57ef535
 
 //Export
 module.exports = {
