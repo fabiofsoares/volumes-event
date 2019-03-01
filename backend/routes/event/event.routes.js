@@ -48,20 +48,20 @@ class EventRouterClass {
 		});
 
 		//Update event
-		eventRouter.put('/', this.passport.authenticate('jwt', { session: false }), (req, res) => {
+		eventRouter.put('/:id', this.passport.authenticate('jwt', { session: false }), (req, res) => {
 			if (typeof req.body === 'undefined' || req.body === null) {
 				sendBodyError(res, 'No body data provided');
 			}
 
 			const { miss, extra, ok } = checkFields(
-				[ 'date_start', 'date_finish', 'name', 'description', 'category', 'place' ],
+				[ 'status', 'date_start', 'date_finish', 'name', 'description', 'category', 'place' ],
 				req.body
 			);
 
 			if (!ok) {
 				sendFieldsError(res, 'Bad fields provided', miss, extra);
 			} else {
-				updateEvent(req.body, req.user._id)
+				updateEvent(req.body, req.params.id)
 					.then((apiResponse) => sendApiSuccessResponse(res, 'Event is updated', apiResponse))
 					.catch((apiResponse) => sendApiErrorResponse(res, 'Error during event update', apiResponse));
 			}
@@ -75,7 +75,7 @@ class EventRouterClass {
 		});
 
 		//Change status
-		eventRouter.put('/change-status', this.passport.authenticate('jwt', { session: false }), (req, res) => {
+		eventRouter.put('/change-status/:id', this.passport.authenticate('jwt', { session: false }), (req, res) => {
 			if (typeof req.body === 'undefined' || req.body === null) {
 				sendBodyError(res, 'No body data provided');
 			}
@@ -85,7 +85,7 @@ class EventRouterClass {
 			if (!ok) {
 				sendFieldsError(res, 'Bad fields provided', miss, extra);
 			} else {
-				changeEventStatus(req.body, req.user._id)
+				changeEventStatus(req.body, req.params.id)
 					.then((apiResponse) => sendApiSuccessResponse(res, 'Event status is updated', apiResponse))
 					.catch((apiResponse) => sendApiErrorResponse(res, 'Error during event status update', apiResponse));
 			}

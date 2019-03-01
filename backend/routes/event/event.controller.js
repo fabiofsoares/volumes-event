@@ -26,15 +26,15 @@ const createEvent = (body, userId) => {
 
 const updateEvent = (body, id) => {
     return new Promise((resolve, reject) => {
-        const updateEvent = {
+        const data = {
             date_start: body.date_start,
             date_finish: body.date_finish,
             name: body.name,
             description: body.description,
-            status: _status[body.status]
+            status: _status[parseInt(body.status)]
         }
-
-        EventModel.findByIdAndUpdate(id, {$set: { updateEvent }})
+        
+        EventModel.findByIdAndUpdate(id, { $set: data })
         .then(mongoResponse => resolve(mongoResponse))
         .catch(mongoResponse => reject(mongoResponse))
     })
@@ -42,7 +42,7 @@ const updateEvent = (body, id) => {
 
 const readEvents = () => {
     return new Promise( (resolve, reject) => {
-        EventModel.find({ $orderby: { date_start : -1 }},(error, event) => {
+        EventModel.find((error, event) => {
             if(error) reject(error)
             else {
                 let eventArray = [];
@@ -71,7 +71,7 @@ const getEvent = (id) => {
 
 const changeEventStatus = (body, id) => {
     return new Promise( (resolve, reject) => {
-    EventModel.findOneAndUpdate(id, {$set: {"status": _status[body.status]}}, (error, event) => {
+    EventModel.findOneAndUpdate(id, {$set: { status : _status[parseInt(body.status)]}}, (error, event) => {
             if(error) reject(error)
             else {
                 return resolve(event)
