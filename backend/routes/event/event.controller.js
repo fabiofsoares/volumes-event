@@ -1,28 +1,28 @@
 // Imports
-const EventModel    = require('../../models/event.model')
-const UserModel     = require('../../models/user.model')
+const EventModel = require('../../models/event.model');
+const UserModel = require('../../models/user.model');
 
 //Event status
-const _status = ['waiting', 'approuved', 'refused', 'canceled', 'deleted'];
+const _status = [ 'waiting', 'approuved', 'refused', 'canceled', 'deleted' ];
 
 //Methods
 const createEvent = (body, userId) => {
-    return new Promise((resolve, reject) => {
-        const newEvent = {
-            author: userId,
-            date_creation: new Date(),
-            date_start: body.date_start,
-            date_finish: body.date_finish,
-            name: body.name,
-            description: body.description,
-            status: _status[1]
-        }
+	return new Promise((resolve, reject) => {
+		const newEvent = {
+			author: userId,
+			date_creation: new Date(),
+			date_start: body.date_start,
+			date_finish: body.date_finish,
+			name: body.name,
+			description: body.description,
+			status: _status[1]
+		};
 
-        EventModel.create(newEvent)
-        .then(mongoResponse => resolve(mongoResponse))
-        .catch(mongoResponse => reject(mongoResponse))
-    })
-}
+		EventModel.create(newEvent)
+			.then((mongoResponse) => resolve(mongoResponse))
+			.catch((mongoResponse) => reject(mongoResponse));
+	});
+};
 
 const updateEvent = (body, id) => {
     return new Promise((resolve, reject) => {
@@ -47,29 +47,30 @@ const readEvents = () => {
             else {
                 let eventArray = [];
 
-                ((async function loop(){
-                    for(let i = 0; i < event.length; i++){
-                        eventArray.push(event[i])
-                    }
-                    return resolve(eventArray)
-                })());
-            }
-        })
-    })
-}
+				(async function loop() {
+					for (let i = 0; i < event.length; i++) {
+						eventArray.push(event[i]);
+					}
+					return resolve(eventArray);
+				})();
+			}
+		});
+	});
+};
 
 const getEvent = (id) => {
-    return new Promise( (resolve, reject) => {
-        EventModel.findById(id, (error, event) => {
-            if(error) reject(error)
-            else {
-                return resolve(event)
-            }
-        })
-    })
-}
+	return new Promise((resolve, reject) => {
+		EventModel.findById(id, (error, event) => {
+			if (error) reject(error);
+			else {
+				return resolve(event);
+			}
+		});
+	});
+};
 
 const changeEventStatus = (body, id) => {
+<<<<<<< HEAD
     return new Promise( (resolve, reject) => {
     EventModel.findOneAndUpdate(id, {$set: { status : _status[parseInt(body.status)]}}, (error, event) => {
             if(error) reject(error)
@@ -79,12 +80,23 @@ const changeEventStatus = (body, id) => {
         })
     })
 }
+=======
+	return new Promise((resolve, reject) => {
+		EventModel.findOneAndUpdate(id, { $set: { status: _status[body.status] } }, (error, event) => {
+			if (error) reject(error);
+			else {
+				return resolve(event);
+			}
+		});
+	});
+};
+>>>>>>> 3a61c373b9f0019742093e76c872e301f57ef535
 
 //Export
 module.exports = {
-    createEvent,
-    readEvents,
-    getEvent,
-    updateEvent,
-    changeEventStatus
-}
+	createEvent,
+	readEvents,
+	getEvent,
+	updateEvent,
+	changeEventStatus
+};
