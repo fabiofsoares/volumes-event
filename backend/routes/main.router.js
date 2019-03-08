@@ -25,7 +25,7 @@ const eventRouter = new EventRouterClass({ passport });
 */
 mainRouter.use('/api', apiRouter);
 apiRouter.use('/user', userRouter.init());
-apiRouter.use('/event', eventRouter.init());
+apiRouter.use('/events', eventRouter.init());
 
 mainRouter.get('/', function(req, res) {
 	res.send('Welcome to Volumes Events');

@@ -10,7 +10,13 @@ const {
 	sendApiErrorResponse
 } = require('../../services/server.response');
 const { checkFields } = require('../../services/request.checker');
-const { createEvent, readEvents, getEvent, updateEvent, changeEventStatus } = require('./event.controller');
+
+const { createEvent, 
+		readEvents, 
+		getEvent, 
+		updateEvent, 
+		changeEventStatus, 
+		getEventByUser } = require('./event.controller');
 
 class EventRouterClass {
 
@@ -28,7 +34,7 @@ class EventRouterClass {
 		});
 
 		//Create new event
-		eventRouter.post('/', this.passport.authenticate('jwt', { session: false }), (req, res) => {
+		eventRouter.post('/event', this.passport.authenticate('jwt', { session: false }), (req, res) => {
 			if (typeof req.body === 'undefined' || req.body === null) {
 				sendBodyError(res, 'No body data provided');
 			}
@@ -48,7 +54,7 @@ class EventRouterClass {
 		});
 
 		//Update event
-		eventRouter.put('/:id', this.passport.authenticate('jwt', { session: false }), (req, res) => {
+		eventRouter.put('/event/:id', this.passport.authenticate('jwt', { session: false }), (req, res) => {
 			if (typeof req.body === 'undefined' || req.body === null) {
 				sendBodyError(res, 'No body data provided');
 			}
@@ -67,8 +73,8 @@ class EventRouterClass {
 			}
 		});
 
-		//Return event by ID
-		eventRouter.get('/:id', (req, res) => {
+		//Return all informations of the event by ID
+		eventRouter.get('/event/:id', (req, res) => {
 			getEvent(req.params.id)
 				.then((apiResponse) => sendApiSuccessResponse(res, 'Event received', apiResponse))
 				.catch((apiResponse) => sendApiErrorResponse(res, 'Error during fetch', apiResponse));
@@ -89,6 +95,13 @@ class EventRouterClass {
 					.then((apiResponse) => sendApiSuccessResponse(res, 'Event status is updated', apiResponse))
 					.catch((apiResponse) => sendApiErrorResponse(res, 'Error during event status update', apiResponse));
 			}
+		});
+
+		//Get { event name, start date, status } all events by user_ID
+		eventRouter.get('/user/:eventId', (req, res) => {
+			getEventByUser(req.params.eventId)
+				.then((apiResponse) => sendApiSuccessResponse(res, 'Event received', apiResponse))
+				.catch((apiResponse) => sendApiErrorResponse(res, 'Error during fetch', apiResponse));
 		});
 	}
 

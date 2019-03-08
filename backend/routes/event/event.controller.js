@@ -80,11 +80,30 @@ const changeEventStatus = (body, id) => {
     })
 }
 
+const getEventByUser = (user) => {
+    return new Promise( (resolve, reject) => {
+		EventModel.find({}, { author: user, name: 1, date_start: 1, status: 1 }, (error, event) => {
+            if(error) reject(error)
+            else {
+                let eventArray = [];
+
+				(async function loop() {
+					for (let i = 0; i < event.length; i++) {
+						eventArray.push(event[i]);
+					}
+					return resolve(eventArray);
+				})();
+			}
+		});
+    })
+}
+
 //Export
 module.exports = {
 	createEvent,
 	readEvents,
 	getEvent,
 	updateEvent,
-	changeEventStatus
+	changeEventStatus,
+	getEventByUser
 };
