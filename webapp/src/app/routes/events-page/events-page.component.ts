@@ -6,8 +6,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // Importer le service
 import { EventsService } from '../../services/events/events.service';
 
+//Header
+//import  Header  from '../../shared/header/header.component';
+
 @Component({
 	selector: 'app-events-page',
+	template: `
+    <app-header></app-header>
+  `,
 	templateUrl: './events-page.component.html',
 	styleUrls: [ './events-page.component.css' ],
 	providers: [ EventsService ]

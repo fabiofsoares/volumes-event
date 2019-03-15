@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 	providedIn: 'root'
 })
 export class EventsService {
-	private apiUrl = `${environment.apiUrl}/event`;
+	private apiUrl = `${environment.apiUrl}/events`;
 
 	constructor(private HttpClient: HttpClient) {}
 
@@ -27,7 +27,7 @@ export class EventsService {
 		myHeader.append('Content-Type', 'application/json');
 
 		return this.HttpClient
-			.get(`${this.apiUrl}`, { headers: myHeader })
+			.get(`${this.apiUrl}/user/5c6c3ed3cdcb5a7655f55804`, { headers: myHeader })
 			.toPromise()
 			.then((apiResponse) => Promise.resolve(apiResponse))
 			.catch((apiResponse) => Promise.reject(apiResponse));

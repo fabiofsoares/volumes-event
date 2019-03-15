@@ -1,25 +1,40 @@
-<h2>Signin</h2>
+<div class="container-singin">
 
-<form [formGroup]="form" (submit)="signin()">
-  <div>
-    <label>First name</label>
-    <input type="text" name="first_name" formControlName="first_name">
-  </div>
-  
-  <div>
-    <label>Last name</label>
-    <input type="text" name="last_name" formControlName="last_name">
-  </div>
+    <div class="content-singin">
 
-  <div>
-    <label>Email</label>
-    <input type="email" name="email" formControlName="email">
-  </div>
-  
-  <div>
-    <label>Password</label>
-    <input type="password" name="password" formControlName="password">
-  </div>
+      <h2>S'inscrire</h2>
 
-  <button type="submit" [disabled]="!form.valid">Signin</button>
-</form>
+      <form [formGroup]="form" (submit)="signin()">
+
+            <div class="input-container">
+              <label>First name</label>
+              <input type="text" name="first_name" formControlName="first_name">
+            </div>
+            
+            <div class="input-container">
+              <label>Last name</label>
+              <input type="text" name="last_name" formControlName="last_name">
+            </div>
+          
+            <div class="input-container">
+              <label>Email</label>
+              <input type="email" name="email" formControlName="email">
+            </div>
+            
+            <div class="input-container">
+              <label>Password</label>
+              <input type="password" name="password" formControlName="password">
+            </div>
+            
+            <div class="input-container button-container">
+              <button type="submit" class="btn btn-primary" [disabled]="!form.valid">S'inscrire</button>
+            </div>
+
+          </form>
+    </div>
+
+    <div class="button-container button-container">
+        <a [routerLink]="'/login'" class="btn btn-secondary">Se connecter</a>
+    </div>
+
+</div>
