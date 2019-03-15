@@ -100,7 +100,7 @@ class EventRouterClass {
 		//Get { event name, start date, status } all events by user_ID
 		eventRouter.get('/user/:eventId', (req, res) => {
 			getEventByUser(req.params.eventId)
-				.then((apiResponse) => sendApiSuccessResponse(res, 'Event received', apiResponse))
+				.then((apiResponse) => sendApiSuccessResponse(res, 'All events by user_ID received', apiResponse))
 				.catch((apiResponse) => sendApiErrorResponse(res, 'Error during fetch', apiResponse));
 		});
 	}
