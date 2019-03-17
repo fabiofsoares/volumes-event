@@ -1,23 +1,16 @@
 <app-header></app-header>
-<div id="display-event-container">
+<div id="edit-event-container">
   <div class="event-img"></div>
   <div class="event-container">
-    <div class="event-status">Non diffusé</div>
-    <div class="event-name-container">
-      <h2>Workshop I.T</h2>
-      <h6>Crée par : Lucas Mendes</h6>
-    </div>
-
     <div class="event-dates-container">
-      <div class="label">Dates</div>
       <div class="datepicker-container">
         <mat-form-field class="datepicker-event">
-          <input matInput [matDatepicker]="picker1" placeholder="Start date" [value]="date.value" disabled>
+          <input matInput [matDatepicker]="picker1" placeholder="Debut" [value]="date.value">
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
         <mat-form-field class="datepicker-event">
-          <input matInput [matDatepicker]="picker2" placeholder="End date" [value]="date.value" disabled>
+          <input matInput [matDatepicker]="picker2" placeholder="Fin" [value]="date.value">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>

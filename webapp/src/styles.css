@@ -209,3 +209,7 @@ h2 {
 #display-event-container .mat-form-field-infix {
 	width: auto !important;
 }
+
+#edit-event-container .mat-form-field-infix {
+	width: auto !important;
+}

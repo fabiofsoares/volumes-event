@@ -15,6 +15,16 @@
 	max-width: 30%;
 }
 
+#display-event-container .event-container .event-status {
+	background-color: #ffdd00;
+	padding: 0.4rem;
+	position: absolute;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	top: 29%;
+}
+
 #display-event-container .event-container .event-name-container,
 #display-event-container .event-container .event-dates-container,
 #display-event-container .event-container .event-info-container,
