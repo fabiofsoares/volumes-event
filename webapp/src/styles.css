@@ -1,17 +1,86 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 /* --- RESEAT --- */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -20,21 +89,34 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
 	display: block;
 }
 body {
 	line-height: 1;
 }
-ol, ul {
+ol,
+ul {
 	list-style: none;
 }
-blockquote, q {
+blockquote,
+q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
 	content: '';
 	content: none;
 }
@@ -45,73 +127,85 @@ table {
 /* --- END RESEAT --- */
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    color: #252525;
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
+	color: #252525;
 }
 
 /* --- FORMULAIRE --- */
 
 label {
-    display: block;
-    font-weight: 600;
+	display: block;
+	font-weight: 600;
 }
 
-input[type='email'], input[type='number'], 
-input[type='password'], input[type='search'], 
-input[type='tel'], input[type='text'], 
-input[type='url'], input[type='color'], 
-input[type='date'], input[type='month'], 
-input[type='week'], input[type='datetime'], 
-input[type='datetime-local'], input:not([type]), 
-textarea, select { 
-    background-color: #FFFFFF;
-    padding: 20px 10px;
-    margin-top: 15px;
-    border-radius: .4rem;
-    border: none;
-    width: 100%;
-    box-sizing: border-box; 
+input[type='email'],
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='tel'],
+input[type='text'],
+input[type='url'],
+input[type='color'],
+input[type='date'],
+input[type='month'],
+input[type='week'],
+input[type='datetime'],
+input[type='datetime-local'],
+/* input:not([type]), */ textarea,
+select {
+	background-color: #ffffff;
+	padding: 20px 10px;
+	margin-top: 15px;
+	border-radius: .4rem;
+	border: none;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .btn {
-    border-radius: .4rem;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 400;
-    height: 3.8rem;
-    letter-spacing: .1rem;
-    line-height: 3.8rem;
-    padding: 0 3.0rem;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    white-space: nowrap;
+	border-radius: .4rem;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 0.7rem;
+	font-weight: 400;
+	height: 3.8rem;
+	letter-spacing: .1rem;
+	line-height: 3.8rem;
+	padding: 0 3.0rem;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	white-space: nowrap;
 }
 
 .btn.btn-primary {
-    background-color: #252525;
-    border: 0.1rem solid #252525;
+	background-color: #252525;
+	border: 0.1rem solid #252525;
 }
 
 .btn.btn-secondary {
-    background-color: #FFDD00;
-    border: 0.1rem solid #FFDD00;
-    color: #252525;
+	background-color: #ffdd00;
+	border: 0.1rem solid #ffdd00;
+	color: #252525;
 }
 
 /*--- Fonts / Texts ---*/
 h1 {
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 22px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 22px;
 }
 
 h2 {
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 18px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 18px;
+}
+
+/*-- Auto width for datepicker input --*/
+#display-event-container .mat-form-field-infix {
+	width: auto !important;
 }

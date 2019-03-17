@@ -9,6 +9,9 @@ import { MainRouter } from './app-router';
 
 // Importer les modules pour la gestion des formulaire
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule, MatNativeDateModule, MatInputModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -19,6 +22,7 @@ import { LoginPageComponent } from './routes/login-page/login-page.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { MePageComponent } from './routes/me-page/me-page.component';
 import { EventsPageComponent } from './routes/events-page/events-page.component';
+import { DisplayEventPageComponent } from './routes/display-event-page/display-event-page.component';
 
 @NgModule({
 	declarations: [
@@ -28,9 +32,21 @@ import { EventsPageComponent } from './routes/events-page/events-page.component'
 		LoginPageComponent,
 		HeaderComponent,
 		MePageComponent,
-		EventsPageComponent
+		EventsPageComponent,
+		DisplayEventPageComponent
 	],
-	imports: [ BrowserModule, RouterModule.forRoot(MainRouter), FormsModule, ReactiveFormsModule, HttpClientModule ],
+	imports: [
+		BrowserModule,
+		RouterModule.forRoot(MainRouter),
+		FormsModule,
+		ReactiveFormsModule,
+		HttpClientModule,
+		MatDatepickerModule,
+		MatNativeDateModule,
+		MatInputModule,
+		MatFormFieldModule,
+		BrowserAnimationsModule
+	],
 	providers: [],
 	bootstrap: [ AppComponent ]
 })

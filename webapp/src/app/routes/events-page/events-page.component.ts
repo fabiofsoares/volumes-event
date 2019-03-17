@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HeaderService } from '../../services/header/header.service';
 
 // Importer les interface pour configurer le formulaire
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -16,12 +17,16 @@ import { EventsService } from '../../services/events/events.service';
   `,
 	templateUrl: './events-page.component.html',
 	styleUrls: [ './events-page.component.css' ],
-	providers: [ EventsService ]
+	providers: [ EventsService, HeaderService ]
 })
 export class EventsPageComponent implements OnInit {
 	public form: FormGroup;
 
-	constructor(private FormBuilder: FormBuilder, private EventsService: EventsService) {}
+	constructor(
+		private FormBuilder: FormBuilder,
+		private EventsService: EventsService,
+		private headerService: HeaderService
+	) {}
 
 	private initForm = () => {
 		this.form = this.FormBuilder.group({
@@ -43,7 +48,8 @@ export class EventsPageComponent implements OnInit {
 	};
 
 	public getCurrentEvent = () => {
-		this.EventsService.getEvent()
+		this.EventsService
+			.getEvent()
 			.then((apiResponse) => console.log(apiResponse))
 			.catch((apiResponse) => console.error(apiResponse));
 	};
@@ -51,5 +57,6 @@ export class EventsPageComponent implements OnInit {
 	ngOnInit() {
 		this.initForm();
 		this.getCurrentEvent();
+		this.headerService.setTitle('Nouvel événement');
 	}
 }

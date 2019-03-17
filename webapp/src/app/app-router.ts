@@ -10,6 +10,7 @@ import { SigninPageComponent } from './routes/signin-page/signin-page.component'
 import { LoginPageComponent } from './routes/login-page/login-page.component';
 import { MePageComponent } from './routes/me-page/me-page.component';
 import { EventsPageComponent } from './routes/events-page/events-page.component';
+import { DisplayEventPageComponent } from './routes/display-event-page/display-event-page.component';
 //
 
 /* 
@@ -35,6 +36,10 @@ export const MainRouter: Routes = [
 	{
 		path: 'events',
 		component: EventsPageComponent
+	},
+	{
+		path: 'display-event',
+		component: DisplayEventPageComponent
 	}
 ];
 //
