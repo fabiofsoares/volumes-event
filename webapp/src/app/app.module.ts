@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './routes/home-page/home-page.component';
@@ -47,7 +48,8 @@ import { EditEventPageComponent } from './routes/edit-event-page/edit-event-page
 		MatNativeDateModule,
 		MatInputModule,
 		MatFormFieldModule,
-		BrowserAnimationsModule
+		BrowserAnimationsModule,
+		FontAwesomeModule
 	],
 	providers: [],
 	bootstrap: [ AppComponent ]

@@ -28,23 +28,34 @@
 #display-event-container .event-container .event-name-container,
 #display-event-container .event-container .event-dates-container,
 #display-event-container .event-container .event-info-container,
+#display-event-container .event-container .event-links-container,
 #display-event-container .event-container .event-categorie-container,
 #display-event-container .event-container .event-description-container,
 #display-event-container .event-container .event-name-container,
-#display-event-container .event-container .event-share-button-container {
+#display-event-container .event-container .event-share-button-container,
+#display-event-container .event-container .circulated-events-container {
 	padding: 0.5rem;
+}
+
+#display-event-container .fb-link fa-icon,
+#display-event-container .eventbrite-link fa-icon {
+	padding: 0.3rem;
 }
 
 #display-event-container .event-container .event-dates-container .label,
 #display-event-container .event-container .event-dates-container .datepicker-container,
 #display-event-container .event-container .event-info-container .label,
 #display-event-container .event-container .event-info-container .infos-container,
+#display-event-container .event-container .event-links-container .label,
+#display-event-container .event-container .event-links-container .links-container,
 #display-event-container .event-container .event-categorie-container .label,
 #display-event-container .event-container .event-categorie-container .categorie-container,
 #display-event-container .event-container .event-description-container .label,
 #display-event-container .event-container .event-description-container .description-container,
 #display-event-container .event-container .event-name-container .label,
-#display-event-container .event-container .event-share-button-container {
+#display-event-container .event-container .event-share-button-container,
+#display-event-container .event-container .circulated-events-container .label,
+#display-event-container .event-container .circulated-events-container .platforms-container {
 	padding: 0.3rem;
 }
 
@@ -65,6 +76,11 @@
 	padding: 0.5rem;
 }
 
+#display-event-container .event-container .event-links-container .links-container .fb-link,
+#display-event-container .event-container .event-links-container .links-container .eventbrite-link {
+	padding: 0.3rem 0;
+}
+
 #display-event-container .event-container .event-share-button-container {
 	text-align: center;
 }
@@ -73,4 +89,9 @@
 	background-color: #252525;
 	height: 2.5rem;
 	line-height: 3.5;
+}
+
+#display-event-container .event-container .circulated-events-container .platforms-container {
+	display: flex;
+	justify-content: space-evenly;
 }
