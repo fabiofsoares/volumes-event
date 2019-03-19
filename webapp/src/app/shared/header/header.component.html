@@ -9,15 +9,13 @@
   </nav>
 </header> -->
 <header>
-
-    <a href="" class="arrow icon-header active">
+    <button (click)="backClicked()" class="go-back-header-button">
       <img src="../../../assets/img/arrow-left.png" alt="">
-    </a>
+    </button>
 
     <h1>{{title}}</h1>
 
-    <a href="" class="arrow icon-header active">
-        <img src="../../../assets/img/icon-edit.png" alt="">
+    <a [routerLink]="'/edit-event'" class="arrow icon-header active">
+      <img src="../../../assets/img/icon-edit.png" alt="">
     </a>
-    
 </header>
