@@ -15,6 +15,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
+import { HeaderService } from '../app/services/header/header.service';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './routes/home-page/home-page.component';
@@ -51,7 +55,7 @@ import { EditEventPageComponent } from './routes/edit-event-page/edit-event-page
 		BrowserAnimationsModule,
 		FontAwesomeModule
 	],
-	providers: [],
+	providers: [ HeaderService ],
 	bootstrap: [ AppComponent ]
 })
 export class AppModule {}

@@ -5,8 +5,7 @@ import { Location } from '@angular/common';
 @Component({
 	selector: 'app-header',
 	templateUrl: './header.component.html',
-	styleUrls: [ './header.component.css' ],
-	providers: [ HeaderService ]
+	styleUrls: [ './header.component.css' ]
 })
 export class HeaderComponent implements OnInit {
 	title = '';
@@ -17,9 +16,8 @@ export class HeaderComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.headerService.title.subscribe((title) => {
-			this.title = title;
-			// console.log('this.title :', this.title);
+		this.headerService.title.subscribe((updatedTitle) => {
+			this.title = updatedTitle;
 		});
 	}
 }

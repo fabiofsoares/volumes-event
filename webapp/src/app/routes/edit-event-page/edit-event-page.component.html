@@ -17,34 +17,79 @@
       </div>
     </div>
 
-    <div class="event-info-container">
-      <div class="label">Infos</div>
-      <div class="infos-container">
-        <div>78 rue Compans 75019 PARIS</div>
-        <div>01 02 03 04 05 / 06 03 01 03 04</div>
-        <div>volumes.info@volumes.fr</div>
-      </div>
-    </div>
+    <div [hidden]="submitted">
+      <form (ngSubmit)="onSubmit()" #eventForm="ngForm" class="event-form-container">
+        <div class="form-group">
+          <label for="event">Evenement</label>
+          <input type="text" class="form-control" id="event" required [(ngModel)]="model.event" name="event" #event="ngModel">
+          <div [hidden]="event.valid || event.pristine" class="alert alert-danger">
+            Event is required
+          </div>
+        </div>
 
-    <div class="event-categorie-container">
-      <div class="label">Categorie</div>
-      <div class="categorie-container">Workshop</div>
-    </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control event-textarea" matInput id="description" required [(ngModel)]="model.description" name="description" #description="ngModel"></textarea>
+        </div>
 
-    <div class="event-description-container">
-      <div class="label">Description</div>
-      <div class="description-container">Chocolate bar danish ice cream. Caramels brownie chocolate cake jujubes dragée tootsie roll. Bonbon apple pie
-        lemon drops cheesecake croissant cheesecake donut.
+        <div class="form-group">
+          <label for="category">Categories</label>
+          <select class="form-control event-select" matNativeControl id="category" required [(ngModel)]="model.category" name="category" #category="ngModel">
+            <option value="workshop">Workshop</option>
+            <option value="meeting">Meeting</option>
+            <option value="class">Class</option>
+          </select>
+          <div [hidden]="category.valid || category.pristine" class="alert alert-danger">
+            Category is required
+          </div>
+        </div>
 
-        Macaroon chupa chups marzipan toffee soufflé oat cake toffee. Ice cream chupa chups gummi bears candy wafer.
-        Marshmallow candy canes sugar plum jelly wafer cake jelly.
+        <div class="form-group">
+          <label for="infos">Infos</label>
+          <div class="infos-inputs-container">
+            <fa-icon [icon]="faMapMarkerAlt" size="lg"></fa-icon>
+            <input type="text" class="form-control info-input" id="address" required [(ngModel)]="model.address" name="address" #address="ngModel">
+            <div [hidden]="address.valid || address.pristine" class="alert alert-danger">
+              Address is required
+            </div>
+          </div>
 
-        Candy canes bonbon tart chocolate bar biscuit candy. Caramels croissant cotton candy. Topping candy jelly-o
-        apple pie gummi bears halvah.</div>
-    </div>
+          <div class="infos-inputs-container">
+            <fa-icon [icon]="faPhone" size="lg"></fa-icon>
+            <input type="text" class="form-control info-input" id="phoneNumber" required [(ngModel)]="model.phoneNumber" name="phoneNumber" #phoneNumber="ngModel">
+            <div [hidden]="phoneNumber.valid || phoneNumber.pristine" class="alert alert-danger">
+              Number is required
+            </div>
+          </div>
 
-    <div class="event-share-button-container">
-      <a [routerLink]="'/share'" class="btn share-btn">Diffuser</a>
+          <div class="infos-inputs-container">
+            <fa-icon [icon]="faEnvelope" size="lg"></fa-icon>
+            <input type="text" class="form-control info-input" id="email" required [(ngModel)]="model.email" name="email" #email="ngModel">
+            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+              Email is required
+            </div>
+          </div>
+        </div>
+
+        <div class="event-links-container">
+          <div class="label">Modifié sur </div>
+          <div class="links-container">
+            <div class="fb-link">
+              <fa-icon [icon]="faFacebook" size="lg"></fa-icon>
+              <a href="#">facebook.com/event-link</a>
+            </div>
+            <div class="eventbrite-link">
+              <fa-icon [icon]="faEtsy" size="lg"></fa-icon>
+              <a href="#">eventbrite.com/event-link</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-cancel-button-container">
+          <button (click)="backClicked()" type="submit" class="btn cancel-btn" [disabled]="!eventForm.form.valid">Annuler événement</button>
+        </div>
+        
+      </form>
     </div>
   </div>
 </div>

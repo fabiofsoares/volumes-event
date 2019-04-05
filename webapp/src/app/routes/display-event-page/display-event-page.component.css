@@ -37,6 +37,7 @@
 	padding: 0.5rem;
 }
 
+#display-event-container .event-container .event-info-container .infos-container div fa-icon,
 #display-event-container .fb-link fa-icon,
 #display-event-container .eventbrite-link fa-icon {
 	padding: 0.3rem;
@@ -59,6 +60,16 @@
 	padding: 0.3rem;
 }
 
+#display-event-container .event-container .event-dates-container .datepicker-container,
+#display-event-container .event-container .event-info-container .infos-container,
+#display-event-container .event-container .event-links-container .links-container,
+#display-event-container .event-container .event-categorie-container .categorie-container,
+#display-event-container .event-container .event-description-container .description-container,
+#display-event-container .event-container .event-share-button-container,
+#display-event-container .event-container .circulated-events-container .platforms-container {
+	margin-top: 0.5rem;
+}
+
 #display-event-container .event-container .event-name-container h6 {
 	text-align: center;
 }
@@ -76,6 +87,7 @@
 	padding: 0.5rem;
 }
 
+#display-event-container .event-container .event-info-container .infos-container div,
 #display-event-container .event-container .event-links-container .links-container .fb-link,
 #display-event-container .event-container .event-links-container .links-container .eventbrite-link {
 	padding: 0.3rem 0;

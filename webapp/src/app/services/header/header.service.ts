@@ -3,11 +3,11 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class HeaderService {
-	public title = new BehaviorSubject('Title');
+	title = new BehaviorSubject('Title');
 
 	constructor() {}
 
-	setTitle(title) {
+	setTitle(title: string) {
 		// console.log('title :', title);
 		this.title.next(title);
 	}
