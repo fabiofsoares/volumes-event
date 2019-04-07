@@ -21,6 +21,7 @@ import { EventsService } from '../../services/events/events.service';
 })
 export class EventsPageComponent implements OnInit {
 	public form: FormGroup;
+	public events = [];
 
 	constructor(
 		private FormBuilder: FormBuilder,
@@ -47,16 +48,8 @@ export class EventsPageComponent implements OnInit {
 			.catch((apiResponse) => console.error(apiResponse));
 	};
 
-	public getCurrentEvent = () => {
-		this.EventsService
-			.getEvent()
-			.then((apiResponse) => console.log(apiResponse))
-			.catch((apiResponse) => console.error(apiResponse));
-	};
-
 	ngOnInit() {
 		this.initForm();
-		this.getCurrentEvent();
 		this.headerService.setTitle('Nouvel événement');
 	}
 }
