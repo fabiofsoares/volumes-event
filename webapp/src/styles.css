@@ -213,3 +213,9 @@ h2 {
 #edit-event-container .mat-form-field-infix {
 	width: auto !important;
 }
+
+/*---- status colors -----*/
+.status.waiting {
+	background-color: rgba(255, 221, 0, 0.8);
+	color: #252525;
+}

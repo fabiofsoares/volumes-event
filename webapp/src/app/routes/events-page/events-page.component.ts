@@ -57,6 +57,6 @@ export class EventsPageComponent implements OnInit {
 	ngOnInit() {
 		this.initForm();
 		this.getCurrentEvent();
-		this.headerService.setTitle('Nouvel événement');
+		this.headerService.setTitle('évenements');
 	}
 }

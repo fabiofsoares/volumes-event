@@ -1,5 +1,22 @@
 <app-header></app-header>
-<form [formGroup]="form" (submit)="createCurrentEvent()">
+<div class="container">
+	<div class="button-container button-container">
+		<a [routerLink]="'/login'" class="btn btn-secondary">Créer un évenement</a>
+	</div>
+	<div class="events-container">
+		<div class="event">
+			<div class="image" style="background-image:url('../../../assets/img/event-image.jpg')"></div>
+			<div class="status waiting">
+				Non diffusé
+			</div>
+			<div class="infos">
+				<h3>Workshop I.T</h3>
+				<p>23/04/2019 - 19h30</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <form [formGroup]="form" (submit)="createCurrentEvent()">
 	<div>
 		<label>Start Date</label>
 		<input type="date" name="date_start" formControlName="date_start">
@@ -31,4 +48,4 @@
 	</div>
 
 	<button type="submit" [disabled]="!form.valid">Create</button>
-</form>
+</form> -->
