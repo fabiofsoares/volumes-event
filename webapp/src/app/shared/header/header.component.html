@@ -18,4 +18,7 @@
     <a [routerLink]="'/edit-event'" class="arrow icon-header active">
       <img src="../../../assets/img/icon-edit.png" alt="">
     </a>
+    <a [routerLink]="'/edit-event'" class="arrow icon-header active" *ngIf="isEditing == true">
+      <img src="../../../assets/img/icon-save.png" alt="">
+    </a>
 </header>

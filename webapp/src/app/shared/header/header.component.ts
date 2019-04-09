@@ -9,10 +9,20 @@ import { Location } from '@angular/common';
 })
 export class HeaderComponent implements OnInit {
 	title = '';
+	isEditing = false;
+
 	constructor(private headerService: HeaderService, private _location: Location) {}
 
 	backClicked() {
 		this._location.back();
+	}
+
+	checkLocation(view) {
+		if (view === 'landing') {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	ngOnInit() {

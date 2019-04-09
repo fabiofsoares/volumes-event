@@ -7,6 +7,10 @@ header {
 	padding: 12px 5px;
 }
 
+header h1 {
+	margin: auto;
+}
+
 header .go-back-header-button {
 	background: transparent;
 	border: transparent;
@@ -14,4 +18,8 @@ header .go-back-header-button {
 
 .icon-header img {
 	width: 25px;
+}
+
+.display {
+	display: none;
 }

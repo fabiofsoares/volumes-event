@@ -21,6 +21,7 @@ import { EventsService } from '../../services/events/events.service';
 })
 export class EventsPageComponent implements OnInit {
 	public form: FormGroup;
+	public events = [];
 
 	constructor(
 		private FormBuilder: FormBuilder,
@@ -43,13 +44,6 @@ export class EventsPageComponent implements OnInit {
 		// Vérifier les champs
 		this.EventsService
 			.create(this.form.value)
-			.then((apiResponse) => console.log(apiResponse))
-			.catch((apiResponse) => console.error(apiResponse));
-	};
-
-	public getCurrentEvent = () => {
-		this.EventsService
-			.getEvent()
 			.then((apiResponse) => console.log(apiResponse))
 			.catch((apiResponse) => console.error(apiResponse));
 	};

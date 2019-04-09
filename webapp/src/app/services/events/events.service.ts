@@ -26,10 +26,8 @@ export class EventsService {
 		let myHeader = new HttpHeaders();
 		myHeader.append('Content-Type', 'application/json');
 
-		return this.HttpClient
-			.get(`${this.apiUrl}/user/5c6c3ed3cdcb5a7655f55804`, { headers: myHeader })
-			.toPromise()
-			.then((apiResponse) => Promise.resolve(apiResponse))
-			.catch((apiResponse) => Promise.reject(apiResponse));
+		return this.HttpClient.get(`${this.apiUrl}/user/5c715755efe7bc1a60d3a57f`, {
+			headers: myHeader
+		});
 	};
 }
