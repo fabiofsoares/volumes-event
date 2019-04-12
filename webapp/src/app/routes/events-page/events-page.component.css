@@ -1,3 +1,12 @@
+h3 {
+    font-weight: 600;
+}
+
+p {
+    margin-top: 5px;
+    font-size: 10px;
+}
+
 .container {
     border: 1px solid red;
 }
@@ -8,14 +17,16 @@
 }
 
 .events-container {
-
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    background-color: #F3F3F3;
 }
 
 .events-container .event {
-    width: 150px;
-    height: 180px;
-    position: relative;
-    box-shadow: 3px 3px 6px #C6C6C6;
+    flex: 1 1 50%;
+    max-width: 50%;
+    margin-top: 20px;
 }
 
 .events-container .event .infos {
@@ -27,13 +38,17 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    background-color: #FFFFFF;
 }
-h3 {
-    font-weight: 600;
-}
-p {
-    margin-top: 5px;
-    font-size: 10px;
+
+
+.events-container .event .event-content {
+    width: 150px;
+    height: 180px;
+    position: relative;
+    margin: 0 auto;
+    box-shadow: 3px 3px 6px #C6C6C6;
 }
 
 .events-container .event .status {
