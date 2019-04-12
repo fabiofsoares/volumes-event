@@ -25,5 +25,7 @@ export class DisplayEventPageComponent implements OnInit {
 
 	ngOnInit() {
 		this.headerService.setTitle('Événement');
+		this.headerService.isBacking = true;
+		this.headerService.isEditing = true;
 	}
 }

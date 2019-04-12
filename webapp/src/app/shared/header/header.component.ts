@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
 })
 export class HeaderComponent implements OnInit {
 	title = '';
-	isEditing = false;
+	// isEditing = false;
 
 	constructor(private headerService: HeaderService, private _location: Location) {}
 

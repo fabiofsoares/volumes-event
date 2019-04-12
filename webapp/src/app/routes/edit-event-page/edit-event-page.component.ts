@@ -45,5 +45,7 @@ export class EditEventPageComponent implements OnInit {
 
 	ngOnInit() {
 		this.headerService.setTitle('Editer');
+		this.headerService.isBacking = true;
+		this.headerService.isSaving = true;
 	}
 }
