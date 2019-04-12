@@ -9,16 +9,20 @@
   </nav>
 </header> -->
 <header>
-    <button (click)="backClicked()" class="go-back-header-button">
+    <button (click)="backClicked()" class="go-back-header-button" *ngIf="headerService.isBacking">
       <img src="../../../assets/img/arrow-left.png" alt="">
     </button>
 
     <h1>{{title}}</h1>
 
-    <a [routerLink]="'/edit-event'" class="arrow icon-header active">
-      <img src="../../../assets/img/icon-edit.png" alt="">
-    </a>
-    <a [routerLink]="'/edit-event'" class="arrow icon-header active" *ngIf="isEditing == true">
-      <img src="../../../assets/img/icon-save.png" alt="">
-    </a>
+    <button class="go-back-header-button" *ngIf="headerService.isEditing">
+      <a [routerLink]="'/edit-event'" class="arrow icon-header active">
+        <img src="../../../assets/img/icon-edit.png" alt="">
+      </a>
+    </button>
+    <button class="go-back-header-button" *ngIf="headerService.isSaving">
+      <a [routerLink]="'/display-event'" class="arrow icon-header active">
+        <img src="../../../assets/img/icon-save.png" alt="">
+      </a>
+    </button>
 </header>
