@@ -16,7 +16,7 @@ export class EventsService {
 		myHeader.append('Content-Type', 'application/json');
 
 		return this.HttpClient
-			.post(`${this.apiUrl}`, data, { headers: myHeader })
+			.post(`${this.apiUrl}/event`, data, { headers: myHeader })
 			.toPromise()
 			.then((apiResponse) => Promise.resolve(apiResponse))
 			.catch((apiResponse) => Promise.reject(apiResponse));

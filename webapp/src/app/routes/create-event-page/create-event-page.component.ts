@@ -7,6 +7,8 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faEtsy } from '@fortawesome/free-brands-svg-icons';
 import { Location } from '@angular/common';
+// Importer le service
+import { EventsService } from '../../services/events/events.service';
 
 @Component({
   selector: 'app-create-event-page',
@@ -18,8 +20,10 @@ export class CreateEventPageComponent implements OnInit {
     public form: FormGroup;
 
     constructor(  private headerService: HeaderService, 
-                private _location: Location, 
+                private _location: Location,
+                private EventsService: EventsService, 
                 private FormBuilder: FormBuilder) {}
+    
     date = new FormControl(new Date());
     
     private initForm = () => {
@@ -39,12 +43,14 @@ export class CreateEventPageComponent implements OnInit {
   
 
 	model = {
-      event: '',
+      name: '',
       description:'',
       category: '',
-      address: '',
-      phoneNumber: '',
-      email: ''
+      place: '',
+      //phoneNumber: '',
+      //email: '',
+    //   date_start: '',
+    //   date_finish: ''
 	};
 
 	faMapMarkerAlt = faMapMarkerAlt;
@@ -60,6 +66,13 @@ export class CreateEventPageComponent implements OnInit {
     console.log('--- creer un evenement ----')
     console.log('FORM INIT -> ', this.form)
     console.log('MODEL -> ' , this.model)
+    this.EventsService
+			.create(this.model)
+            .then((apiResponse) => {
+                console.log(apiResponse)
+                window.location.href = '/events';
+            })
+			.catch((apiResponse) => console.error(apiResponse));
     
   }
   
