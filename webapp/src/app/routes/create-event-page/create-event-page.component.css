@@ -1,0 +1,127 @@
+#create-event-container {
+	display: flex;
+    flex-direction: column;
+}
+
+#create-event-container .event-img {
+	width: 100%;
+	height: 25vh;
+	background: url('../../../assets/img/event.jpg') no-repeat center fixed;
+	background-size: cover;
+}
+
+#create-event-container .label {
+	background-color: #ff0036;
+	max-width: 30%;
+}
+
+#create-event-container .event-container .event-dates-container,
+#create-event-container .event-container .event-form-container,
+#create-event-container .event-container .event-share-button-container {
+	padding: 0.5rem;
+}
+
+#create-event-container .event-container .event-dates-container .label,
+#create-event-container .event-container .event-dates-container .datepicker-container,
+#create-event-container .event-container .event-share-button-container {
+	padding: 0.3rem;
+}
+
+#create-event-container .event-container .event-dates-container {
+	display: flex;
+	flex-direction: column;
+}
+
+#create-event-container .event-container .event-dates-container .datepicker-container {
+	display: flex;
+}
+
+#create-event-container .event-container .event-dates-container .datepicker-container .datepicker-event {
+	padding: 0.5rem;
+}
+
+#create-event-container .event-container .event-share-button-container {
+	text-align: center;
+}
+
+#create-event-container .event-container .event-share-button-container .share-btn {
+	background-color: #252525;
+	height: 2.5rem;
+	line-height: 3.5;
+}
+
+.ng-valid[required],
+.ng-valid.required {
+	border-left: 5px solid #42a948; /* green */
+	background-color: #e5e5e5;
+}
+
+.ng-invalid:not(form) {
+    border-left: 5px solid #a94442; /* red */
+    background-color: rgba(198, 198, 198, 0.35);
+}
+
+#create-event-container .event-textarea,
+#create-event-container .event-links-container .links-container {
+	margin-top: 0.5rem;
+	padding: 0.5rem;
+}
+
+#create-event-container .event-textarea {
+    min-height: 150px;
+}
+
+#create-event-container .event-select {
+	margin-top: 30px;
+	padding: 0.5rem;
+}
+
+#create-event-container .infos-inputs-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	margin: 0.5rem;
+}
+
+
+#create-event-container .event-container .event-form-container .form-group,
+#create-event-container .event-container .event-form-container .event-links-container {
+	margin: 0.5rem;
+}
+
+#create-event-container .event-container .event-form-container .buttons-container {
+    margin-top: 2.6em;
+}
+
+#create-event-container .event-container .event-form-container .event-links-container .links-container .fb-link,
+#create-event-container .event-container .event-form-container .event-links-container .links-container .eventbrite-link {
+	padding: 0.3rem 0;
+}
+
+#create-event-container .infos-inputs-container fa-icon {
+	flex: 1 0 0%;
+}
+
+#create-event-container .infos-inputs-container .info-input {
+	flex: 1 1 80%;
+}
+
+#create-event-container .info-input {
+	width: auto !important;
+	margin-top: 0;
+}
+
+#create-event-container .event-textarea.ng-invalid[_ngcontent-c0]:not(form) {
+    border-left: transparent;
+    background-color: rgba(198, 198, 198, 0.35);
+}
+
+#create-event-container .event-container .buttons-container {
+	text-align: center;
+}
+
+#create-event-container .event-container .buttons-container .cancel-btn {
+	background-color: #252525;
+	height: 2.5rem;
+	line-height: 3.5;
+}

@@ -1,0 +1,83 @@
+<app-header></app-header>
+<div id="create-event-container">
+  <div class="event-img"></div>
+  <div class="event-container">
+    
+    <div [hidden]="submitted">
+      <form  #eventForm="ngForm" class="event-form-container">
+          <div class="event-dates-container">
+              <div class="datepicker-container">
+                <mat-form-field class="datepicker-event">
+                  <input matInput [matDatepicker]="picker1" placeholder="Debut" [value]="date.value">
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="datepicker-event">
+                  <input matInput [matDatepicker]="picker2" placeholder="Fin" [value]="date.value">
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+        
+        <div class="form-group">
+          <label for="event">Evenement</label>
+          <input type="text" class="form-control" id="event" required [(ngModel)]="model.event" name="event" #event="ngModel">
+          <div [hidden]="event.valid || event.pristine" class="alert alert-danger">
+            Event is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="category">Categories</label>
+          <select class="form-control event-select" matNativeControl id="category" required [(ngModel)]="model.category" name="category" #category="ngModel">
+            <option value="workshop">Workshop</option>
+            <option value="meeting">Meeting</option>
+            <option value="class">Class</option>
+          </select>
+          <div [hidden]="category.valid || category.pristine" class="alert alert-danger">
+            Category is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="infos">Infos</label>
+          <div class="infos-inputs-container">
+            <fa-icon [icon]="faMapMarkerAlt" size="lg"></fa-icon>
+            <input type="text" class="form-control info-input" id="address" required [(ngModel)]="model.address" name="address" #address="ngModel">
+            <div [hidden]="address.valid || address.pristine" class="alert alert-danger">
+              Address is required
+            </div>
+          </div>
+
+          <div class="infos-inputs-container">
+            <fa-icon [icon]="faPhone" size="lg"></fa-icon>
+            <input type="text" class="form-control info-input" id="phoneNumber" required [(ngModel)]="model.phoneNumber" name="phoneNumber" #phoneNumber="ngModel">
+            <div [hidden]="phoneNumber.valid || phoneNumber.pristine" class="alert alert-danger">
+              Number is required
+            </div>
+          </div>
+
+          <div class="infos-inputs-container">
+            <fa-icon [icon]="faEnvelope" size="lg"></fa-icon>
+            <input type="text" class="form-control info-input" id="email" required [(ngModel)]="model.email" name="email" #email="ngModel">
+            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+              Email is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control event-textarea" matInput id="description" required [(ngModel)]="model.description" name="description" #description="ngModel"></textarea>
+        </div>
+
+        <div class="buttons-container">
+          <button (click)="createEvent()" type="submit" class="btn cancel-btn" [disabled]="!eventForm.form.valid">Enregistrer</button>
+          <button (click)="spreadEvent()" type="submit" class="btn cancel-btn" [disabled]="!eventForm.form.valid">Diffuser</button>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+</div>

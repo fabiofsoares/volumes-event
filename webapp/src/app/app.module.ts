@@ -29,6 +29,7 @@ import { MePageComponent } from './routes/me-page/me-page.component';
 import { EventsPageComponent } from './routes/events-page/events-page.component';
 import { DisplayEventPageComponent } from './routes/display-event-page/display-event-page.component';
 import { EditEventPageComponent } from './routes/edit-event-page/edit-event-page.component';
+import { CreateEventPageComponent } from './routes/create-event-page/create-event-page.component';
 
 @NgModule({
 	declarations: [
@@ -40,7 +41,8 @@ import { EditEventPageComponent } from './routes/edit-event-page/edit-event-page
 		MePageComponent,
 		EventsPageComponent,
 		DisplayEventPageComponent,
-		EditEventPageComponent
+		EditEventPageComponent,
+		CreateEventPageComponent
 	],
 	imports: [
 		BrowserModule,
