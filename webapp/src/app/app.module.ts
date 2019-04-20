@@ -31,6 +31,10 @@ import { DisplayEventPageComponent } from './routes/display-event-page/display-e
 import { EditEventPageComponent } from './routes/edit-event-page/edit-event-page.component';
 import { CreateEventPageComponent } from './routes/create-event-page/create-event-page.component';
 
+import { CookieService } from 'ngx-cookie-service';
+import { NotFoundPageComponent } from './routes/not-found-page/not-found-page.component';
+import { AuthGuardService as AuthGuard } from './services/auth/auth-guard.service';
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -42,7 +46,8 @@ import { CreateEventPageComponent } from './routes/create-event-page/create-even
 		EventsPageComponent,
 		DisplayEventPageComponent,
 		EditEventPageComponent,
-		CreateEventPageComponent
+		CreateEventPageComponent,
+		NotFoundPageComponent
 	],
 	imports: [
 		BrowserModule,
@@ -57,7 +62,7 @@ import { CreateEventPageComponent } from './routes/create-event-page/create-even
 		BrowserAnimationsModule,
 		FontAwesomeModule
 	],
-	providers: [ HeaderService ],
+	providers: [ HeaderService, CookieService, AuthGuard ],
 	bootstrap: [ AppComponent ]
 })
 export class AppModule {}

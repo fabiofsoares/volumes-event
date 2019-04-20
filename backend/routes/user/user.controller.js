@@ -41,11 +41,13 @@ const login = (body, req, res) => {
 				const validPassword = bcrypt.compareSync(body.password, user.password);
 				if (!validPassword) reject('Password not valid');
 				else {
+					const userToken = user.generateJwt();
+
 					// Set cookie
-					res.cookie('VolumesToken', user.generateJwt(), { httpOnly: true });
+					res.cookie('VolumesToken', user.generateJwt(), { httpOnly: false });
 
 					// Resolve user data
-					resolve(user);
+					resolve({ user, userToken });
 				}
 			}
 		});
@@ -54,7 +56,6 @@ const login = (body, req, res) => {
 
 const read = (body) => {
 	return new Promise((resolve, reject) => {
-		console.log('test', body);
 		UserModel.findOne({ email: body.email }, (error, user) => {
 			if (error) reject(error);
 			else {

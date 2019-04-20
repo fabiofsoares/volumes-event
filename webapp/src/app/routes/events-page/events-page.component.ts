@@ -50,14 +50,14 @@ export class EventsPageComponent implements OnInit {
 
 	public getAll = () => {
 		this.EventsService.getEvent().subscribe((res: any[]) => {
-			console.log(res && res)
-			this.events = res.data;
+			console.log(res && res);
+			this.events = res;
 			// console.log(this.events);
 		});
 	};
 
 	ngOnInit() {
-		this.getAll()
+		this.getAll();
 		//console.log('	this.EventsService : ', 	this.EventsService.getEvent())
 		//this.getCurrentEvent();
 		this.headerService.setTitle('évenements');

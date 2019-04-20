@@ -1,8 +1,12 @@
 /* 
 Importer l'interface pour définir les routes
 */
+
 // Angular
 import { Routes } from '@angular/router';
+
+// Auth-guard
+import { AuthGuardService as AuthGuard } from './services/auth/auth-guard.service';
 
 // Inner
 import { HomePageComponent } from './routes/home-page/home-page.component';
@@ -13,6 +17,7 @@ import { EventsPageComponent } from './routes/events-page/events-page.component'
 import { DisplayEventPageComponent } from './routes/display-event-page/display-event-page.component';
 import { EditEventPageComponent } from './routes/edit-event-page/edit-event-page.component';
 import { CreateEventPageComponent } from './routes/create-event-page/create-event-page.component';
+import { NotFoundPageComponent } from './routes/not-found-page/not-found-page.component';
 
 //
 
@@ -25,6 +30,10 @@ export const MainRouter: Routes = [
 		component: HomePageComponent
 	},
 	{
+		path: 'home-page',
+		component: HomePageComponent
+	},
+	{
 		path: 'signin',
 		component: SigninPageComponent
 	},
@@ -34,23 +43,32 @@ export const MainRouter: Routes = [
 	},
 	{
 		path: 'me',
-		component: MePageComponent
+		component: MePageComponent,
+		canActivate: [ AuthGuard ]
 	},
 	{
 		path: 'events',
-		component: EventsPageComponent
+		component: EventsPageComponent,
+		canActivate: [ AuthGuard ]
 	},
 	{
 		path: 'display-event',
-		component: DisplayEventPageComponent
+		component: DisplayEventPageComponent,
+		canActivate: [ AuthGuard ]
 	},
 	{
 		path: 'edit-event',
-		component: EditEventPageComponent
+		component: EditEventPageComponent,
+		canActivate: [ AuthGuard ]
 	},
 	{
 		path: 'create-event',
-		component: CreateEventPageComponent
-	} 
+		component: CreateEventPageComponent,
+		canActivate: [ AuthGuard ]
+	},
+	{
+		path: '**',
+		component: NotFoundPageComponent
+	}
 ];
 //

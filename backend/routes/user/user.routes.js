@@ -55,10 +55,10 @@ class UserRouterClass {
 
 		//Read
 		userRouter.get('/me', (req, res) => {
-			req.cookies['VolumesToken'];
+			let token = req.cookies['VolumesToken'];
 
-			read(req.body)
-				.then((apiResponse) => sendApiSuccessResponse(res, 'User is logged', apiResponse))
+			read(req.body, req, res)
+				.then((apiResponse) => sendApiSuccessResponse(res, "User's infos", token, apiResponse))
 				.catch((apiResponse) => sendApiErrorResponse(res, 'Error during user login', apiResponse));
 		});
 	}
