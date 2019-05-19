@@ -66,7 +66,8 @@ export class CreateEventPageComponent implements OnInit {
 		.create(data)
 			.then((apiResponse) => {
 				console.log('saveData : ', apiResponse)
-				return apiResponse
+				
+				return Promise.resolve(apiResponse)
 			})
 		.catch((apiResponse) => console.error(apiResponse));
 	}
@@ -76,8 +77,15 @@ export class CreateEventPageComponent implements OnInit {
 		window.location.href = '/events';
 	};
 
-	public spreadEvent = () => {
-		console.log('---- diffuser ----');
+	public spreadEvent = async () => {
+		try {
+			const _eventSaved = await this.saveData(this.model)
+			console.log('---- diffuser ----', _eventSaved);
+		} catch (err){
+			console.log(err)
+		}
+		
+		
 	};
 
 	public backClicked = () => {
