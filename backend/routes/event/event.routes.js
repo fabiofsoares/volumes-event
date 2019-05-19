@@ -34,20 +34,23 @@ class EventRouterClass {
 		});
 
 		//Create new event
-		eventRouter.post('/event', this.passport.authenticate('jwt', { session: false }), (req, res) => {
+		//eventRouter.post('/event', this.passport.authenticate('jwt', { session: false }), (req, res) => {
+		eventRouter.post('/event', (req, res) => {
 			if (typeof req.body === 'undefined' || req.body === null) {
 				sendBodyError(res, 'No body data provided');
 			}
 
 			const { miss, extra, ok } = checkFields(
-				[ 'date_start', 'date_finish', 'name', 'description', 'category', 'place' ],
+				//[ 'date_start', 'date_finish', 'name', 'description', 'category', 'place' ],
+				[ 'name', 'description', 'category', 'place' ],
 				req.body
 			);
 
 			if (!ok) {
 				sendFieldsError(res, 'Bad fields provided', miss, extra);
 			} else {
-				createEvent(req.body, req.user._id)
+				//createEvent(req.body, req.user._id)
+				createEvent(req.body, '5c715755efe7bc1a60d3a57f')
 					.then((apiResponse) => sendApiSuccessResponse(res, 'Event is created', apiResponse))
 					.catch((apiResponse) => sendApiErrorResponse(res, 'Error during event creation', apiResponse));
 			}

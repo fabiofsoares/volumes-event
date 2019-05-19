@@ -18,6 +18,7 @@ import { DisplayEventPageComponent } from './routes/display-event-page/display-e
 import { EditEventPageComponent } from './routes/edit-event-page/edit-event-page.component';
 import { CreateEventPageComponent } from './routes/create-event-page/create-event-page.component';
 import { NotFoundPageComponent } from './routes/not-found-page/not-found-page.component';
+import { SpreadEventComponent } from './routes/spread-event/spread-event.component';
 
 //
 
@@ -64,6 +65,11 @@ export const MainRouter: Routes = [
 	{
 		path: 'create-event',
 		component: CreateEventPageComponent,
+		canActivate: [ AuthGuard ]
+	},
+	{
+		path: 'spread-event',
+		component: SpreadEventComponent,
 		canActivate: [ AuthGuard ]
 	},
 	{
