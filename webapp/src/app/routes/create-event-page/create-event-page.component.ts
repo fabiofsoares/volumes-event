@@ -61,18 +61,19 @@ export class CreateEventPageComponent implements OnInit {
 
 	submitted = false;
 
+	public saveData = (data) => {
+		this.EventsService
+		.create(data)
+			.then((apiResponse) => {
+				console.log('saveData : ', apiResponse)
+				return apiResponse
+			})
+		.catch((apiResponse) => console.error(apiResponse));
+	}
+
 	public createEvent = () => {
-		//this.submitted = true;
-		console.log('--- creer un evenement ----');
-		console.log('FORM INIT -> ', this.form);
-		console.log('MODEL -> ', this.model);
-		// this.EventsService
-		// 	.create(this.model)
-		//         .then((apiResponse) => {
-		//             console.log(apiResponse)
-		//             window.location.href = '/events';
-		//         })
-		// 	.catch((apiResponse) => console.error(apiResponse));
+		this.saveData(this.model)
+		window.location.href = '/events';
 	};
 
 	public spreadEvent = () => {
