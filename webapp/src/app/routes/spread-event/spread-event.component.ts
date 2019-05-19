@@ -56,7 +56,7 @@ export class SpreadEventComponent implements OnInit {
 		this.eventbriteService
 			.postEvent(this.currentEvent)
 			.then(() => this.eventbriteService.postTicket(this.currentTicket))
-			.then(() => this.eventbriteService.postPublish());
+			.then(() => this.eventbriteService.postPublish(''));
 	}
 
 	ngOnInit() {
