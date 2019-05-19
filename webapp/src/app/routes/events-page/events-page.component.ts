@@ -50,9 +50,9 @@ export class EventsPageComponent implements OnInit {
 
 	public getAll = () => {
 		this.EventsService.getEvent().subscribe((res: any[]) => {
-			console.log(res && res);
-			this.events = res;
-			// console.log(this.events);
+		
+				this.events = res.data;
+			
 		});
 	};
 
