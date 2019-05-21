@@ -51,10 +51,6 @@ p {
     box-shadow: 3px 3px 6px #C6C6C6;
 }
 
-.events-container .event .event-content.canceled {
-    opacity: 0.7;
-}
-
 .events-container .event .status {
     text-align: center;
     padding: 7px 0;

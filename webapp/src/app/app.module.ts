@@ -27,6 +27,7 @@ import { LoginPageComponent } from './routes/login-page/login-page.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { MePageComponent } from './routes/me-page/me-page.component';
 import { EventsPageComponent } from './routes/events-page/events-page.component';
+import { EventPageComponent } from './routes/event-page/event-page.component';
 import { DisplayEventPageComponent } from './routes/display-event-page/display-event-page.component';
 import { EditEventPageComponent } from './routes/edit-event-page/edit-event-page.component';
 import { CreateEventPageComponent } from './routes/create-event-page/create-event-page.component';
@@ -45,6 +46,7 @@ import { AuthGuardService as AuthGuard } from './services/auth/auth-guard.servic
 		HeaderComponent,
 		MePageComponent,
 		EventsPageComponent,
+		EventPageComponent,
 		DisplayEventPageComponent,
 		EditEventPageComponent,
 		CreateEventPageComponent,

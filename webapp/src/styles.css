@@ -233,12 +233,17 @@ h2 {
 
 /*---- status colors -----*/
 .status.waiting {
-	background-color: rgba(255, 221, 0, 0.8);
+	background-color: rgba(255, 221, 0, 1);
 	color: #252525;
 }
 
 .status.canceled {
-	background-color: rgba(255, 0, 54, 0.8);
+	background-color: #89200B;
+	color: #252525;
+}
+
+.status.approuved {
+	background-color: #036D06;
 	color: #252525;
 }
 /*--- Cards ---*/

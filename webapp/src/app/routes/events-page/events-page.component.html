@@ -8,7 +8,7 @@
 	<div class="events-container">
 		
 		<div class="event" *ngFor="let event of events">
-			<div class="event-content">
+			<div [ngClass]="['event-content', event.status]">
 				<div class="image" style="background-image:url('../../../assets/img/event-image.jpg')"></div>
 				<div [ngClass]="['status', event.status]">
 					{{ event.status }}
