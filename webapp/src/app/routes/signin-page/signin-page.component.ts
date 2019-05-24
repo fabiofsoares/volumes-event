@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-// Importer les interface pour configurer le formulaire
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-// Importer le service
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -15,7 +12,7 @@ import { AuthService } from '../../services/auth/auth.service';
 export class SigninPageComponent implements OnInit {
 	public form: FormGroup;
 
-	constructor(private FormBuilder: FormBuilder, private AuthService: AuthService) {}
+	constructor(private FormBuilder: FormBuilder, private AuthService: AuthService, private Router: Router) {}
 
 	private initForm = () => {
 		this.form = this.FormBuilder.group({
@@ -30,7 +27,7 @@ export class SigninPageComponent implements OnInit {
 		// Vérifier les champs
 		this.AuthService
 			.signin(this.form.value)
-			.then((apiResponse) => console.log(apiResponse))
+			.then(() => this.Router.navigate([ 'login' ]))
 			.catch((apiResponse) => console.error(apiResponse));
 	};
 
