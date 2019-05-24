@@ -10,8 +10,8 @@
         <img src="../../../assets/img/login.png" alt="">
       </a>
     </button>
-    <button class="go-back-header-button" *ngIf="authService.isLoggedIn() && !headerService.isEditing && !headerService.isSaving">
-      <a [routerLink]="'/logout'" class="arrow icon-header active">
+    <button class="go-back-header-button" (click)="logout()" *ngIf="authService.isLoggedIn() && !headerService.isEditing && !headerService.isSaving">
+      <a  class="arrow icon-header active">
         <img src="../../../assets/img/logout.png" alt="">
       </a>
     </button>
