@@ -8,16 +8,18 @@
 	<div class="events-container">
 		
 		<div class="event" *ngFor="let event of events">
-			<div [ngClass]="['event-content', event.status]">
-				<div class="image" style="background-image:url('../../../assets/img/event-image.jpg')"></div>
-				<div [ngClass]="['status', event.status]">
-					{{ event.status }}
+			<a [routerLink]="['/event', event._id]">
+				<div [ngClass]="['event-content', event.status]">
+					<div class="image" style="background-image:url('../../../assets/img/event-image.jpg')"></div>
+					<div [ngClass]="['status', event.status]">
+						{{ event.status }}
+					</div>
+					<div class="infos">
+						<h3>{{ event.name }}</h3>
+						<p>{{ event.date_start | date:'dd/MM/yy - HH:mm' }} </p>
+					</div>
 				</div>
-				<div class="infos">
-					<h3>{{ event.name }}</h3>
-					<p>{{ event.date_start | date:'dd/MM/yy - HH:mm' }} </p>
-				</div>
-			</div>
+			</a>
 		</div>
 
 	</div>

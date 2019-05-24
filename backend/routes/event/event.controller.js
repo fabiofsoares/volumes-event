@@ -15,7 +15,7 @@ const createEvent = (body, userId) => {
 			date_finish: body.date_finish,
 			name: body.name,
 			description: body.description,
-			status: _status[1]
+			status: _status[0]
 		};
 
 		EventModel.create(newEvent)

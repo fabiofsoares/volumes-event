@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router,ActivatedRoute } from '@angular/router';
 import { HeaderService } from '../../services/header/header.service';
 
 // Importer les interface pour configurer le formulaire
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ControlContainer } from '@angular/forms';
 
 // Importer le service
 import { EventsService } from '../../services/events/events.service';
@@ -22,12 +23,12 @@ import { EventsService } from '../../services/events/events.service';
 export class EventPageComponent implements OnInit {
 	public form: FormGroup;
 	public events = [];
-
-	constructor(
-		private FormBuilder: FormBuilder,
-		private EventsService: EventsService,
-		private headerService: HeaderService
-	) {}
+	
+    constructor(
+        private _Activatedroute:ActivatedRoute,
+        private _router:Router,
+        private headerService: HeaderService
+    ){}
 
 
 
@@ -38,7 +39,8 @@ export class EventPageComponent implements OnInit {
 
 
 	ngOnInit() {
-			
+        this.id = this._Activatedroute.snapshot.params['id'];	
+        console.log("ID PARAM : ", this.id)
 		//console.log('	this.EventsService : ', 	this.EventsService.getEvent())
 		//this.getCurrentEvent();
 		this.headerService.setTitle('évenements');
