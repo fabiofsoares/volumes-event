@@ -61,5 +61,6 @@ export class SpreadEventComponent implements OnInit {
 
 	ngOnInit() {
 		this.headerService.setTitle('Diffuser');
+		this.headerService.isBacking = true;
 	}
 }

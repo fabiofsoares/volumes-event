@@ -42,6 +42,13 @@ export class EventPageComponent implements OnInit {
 		this.EventsService.getEventById(id).subscribe((res: any[]) => {
 		
             this.event = res.data;
+            
+            if(res.data.status === 'waiting'){
+                this.isPendingEvent = true;
+            } else {
+                this.isPendingEvent = false;
+            }
+
             console.log('Event detail : ', res)    
             //this.events = res.data;
 			

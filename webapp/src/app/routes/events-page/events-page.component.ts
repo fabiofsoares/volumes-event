@@ -52,7 +52,6 @@ export class EventsPageComponent implements OnInit {
 		this.EventsService.getEvent().subscribe((res: any[]) => {
 		
 				this.events = res.data;
-			
 		});
 	};
 

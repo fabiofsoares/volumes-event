@@ -43,7 +43,7 @@ export class LoginPageComponent implements OnInit {
 			.then((apiResponse) => {
 				this.cookieService.set('userToken', apiResponse.data.userToken);
 				this.cookieService.set('userid', apiResponse.data.user._id);
-				this.Router.navigate([ 'home-page' ]);
+				this.Router.navigate([ 'events' ]);
 				console.log('Logged', apiResponse);
 			})
 			.catch((apiResponse) => console.error(apiResponse));
