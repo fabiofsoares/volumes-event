@@ -1,13 +1,3 @@
-<!-- <header>
-  <h1>Welcome to Volumes Events</h1>
-  <nav>
-    <a [routerLink]="'/'">Home</a>
-    <a [routerLink]="'/signin'">Signin</a>
-    <a [routerLink]="'/login'">Login</a>
-    <a [routerLink]="'/me'">Me</a>
-    <a [routerLink]="'/events'">Events</a>
-  </nav>
-</header> -->
 <header>
     <button (click)="backClicked()" class="go-back-header-button" *ngIf="headerService.isBacking">
       <img src="../../../assets/img/arrow-left.png" alt="">
@@ -15,6 +5,16 @@
 
     <h1>{{title}}</h1>
 
+    <button class="go-back-header-button" *ngIf="!authService.isLoggedIn()">
+      <a [routerLink]="'/login'" class="arrow icon-header active">
+        <img src="../../../assets/img/login.png" alt="">
+      </a>
+    </button>
+    <button class="go-back-header-button" *ngIf="authService.isLoggedIn() && !headerService.isEditing && !headerService.isSaving">
+      <a [routerLink]="'/logout'" class="arrow icon-header active">
+        <img src="../../../assets/img/logout.png" alt="">
+      </a>
+    </button>
     <button class="go-back-header-button" *ngIf="headerService.isEditing">
       <a [routerLink]="'/edit-event'" class="arrow icon-header active">
         <img src="../../../assets/img/icon-edit.png" alt="">
