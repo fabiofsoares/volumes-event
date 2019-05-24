@@ -1,71 +1,127 @@
-h3 {
-    font-weight: 600;
+#display-event-container {
+	display: flex;
+	flex-direction: column;
 }
 
-p {
-    margin-top: 5px;
-    font-size: 10px;
+#display-event-container .event-img {
+	width: 100%;
+	height: 25vh;
+	background: url('../../../assets/img/event.jpg') no-repeat center fixed;
+	background-size: cover;
 }
 
-.container {
-    border: 1px solid red;
+#display-event-container .label {
+	background-color: #ff0036;
+	max-width: 30%;
 }
 
-.button-container {
-    text-align: center;
-    margin: 20px 0;
+#display-event-container .event-container .event-status {
+	background-color: #ffdd00;
+	padding: 0.4rem;
+	position: absolute;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	top: 29%;
 }
 
-.events-container {
-    display: flex;
-    flex-wrap: wrap;
-    padding-bottom: 20px;
-    background-color: #F3F3F3;
-}
-
-.events-container .event {
-    flex: 1 1 50%;
-    max-width: 50%;
-    margin-top: 20px;
-}
-
-.events-container .event .infos {
-    width: 100%;
-    height: 40%;
-    
-    text-align: center;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    background-color: #FFFFFF;
-}
-
-
-.events-container .event .event-content {
-    width: 150px;
-    height: 180px;
+#display-event-container .event-container {
     position: relative;
+    padding-top: 30px;
+}
+
+#display-event-container .event-container .status {
+    padding: 10px 0;
+    width: 50%;
     margin: 0 auto;
-    box-shadow: 3px 3px 6px #C6C6C6;
-}
-
-.events-container .event .status {
     text-align: center;
-    padding: 7px 0;
-    width: 100%;
+    text-transform: uppercase;
+    color: #FFFFFF;
     position: absolute;
-    top: 50%;
-    font-weight: 600;
-    font-size: 14px;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.events-container .event .image {
-    width: 100%;
-    height: 60%;
+#display-event-container .event-container .event-name-container,
+#display-event-container .event-container .event-dates-container,
+#display-event-container .event-container .event-info-container,
+#display-event-container .event-container .event-links-container,
+#display-event-container .event-container .event-categorie-container,
+#display-event-container .event-container .event-description-container,
+#display-event-container .event-container .event-name-container,
+#display-event-container .event-container .event-share-button-container,
+#display-event-container .event-container .circulated-events-container {
+	padding: 0.5rem;
+}
 
-    background-position: no-repeat;
-    background-position: center center;
-    background-size: cover;
+#display-event-container .event-container .event-info-container .infos-container div fa-icon,
+#display-event-container .fb-link fa-icon,
+#display-event-container .eventbrite-link fa-icon {
+	padding: 0.3rem;
+}
+
+#display-event-container .event-container .event-dates-container .label,
+#display-event-container .event-container .event-dates-container .datepicker-container,
+#display-event-container .event-container .event-info-container .label,
+#display-event-container .event-container .event-info-container .infos-container,
+#display-event-container .event-container .event-links-container .label,
+#display-event-container .event-container .event-links-container .links-container,
+#display-event-container .event-container .event-categorie-container .label,
+#display-event-container .event-container .event-categorie-container .categorie-container,
+#display-event-container .event-container .event-description-container .label,
+#display-event-container .event-container .event-description-container .description-container,
+#display-event-container .event-container .event-name-container .label,
+#display-event-container .event-container .event-share-button-container,
+#display-event-container .event-container .circulated-events-container .label,
+#display-event-container .event-container .circulated-events-container .platforms-container {
+	padding: 0.3rem;
+}
+
+#display-event-container .event-container .event-dates-container .datepicker-container,
+#display-event-container .event-container .event-info-container .infos-container,
+#display-event-container .event-container .event-links-container .links-container,
+#display-event-container .event-container .event-categorie-container .categorie-container,
+#display-event-container .event-container .event-description-container .description-container,
+#display-event-container .event-container .event-share-button-container,
+#display-event-container .event-container .circulated-events-container .platforms-container {
+	margin-top: 0.5rem;
+}
+
+#display-event-container .event-container .event-name-container h6 {
+	text-align: center;
+}
+
+#display-event-container .event-container .event-dates-container {
+	display: flex;
+	flex-direction: column;
+}
+
+#display-event-container .event-container .event-dates-container .datepicker-container {
+	display: flex;
+}
+
+#display-event-container .event-container .event-dates-container .datepicker-container .datepicker-event {
+	padding: 0.5rem;
+}
+
+#display-event-container .event-container .event-info-container .infos-container div,
+#display-event-container .event-container .event-links-container .links-container .fb-link,
+#display-event-container .event-container .event-links-container .links-container .eventbrite-link {
+	padding: 0.3rem 0;
+}
+
+#display-event-container .event-container .event-share-button-container {
+	text-align: center;
+}
+
+#display-event-container .event-container .event-share-button-container .share-btn {
+	background-color: #252525;
+	height: 2.5rem;
+	line-height: 3.5;
+}
+
+#display-event-container .event-container .circulated-events-container .platforms-container {
+	display: flex;
+	justify-content: space-evenly;
 }

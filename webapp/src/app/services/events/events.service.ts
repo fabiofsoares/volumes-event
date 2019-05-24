@@ -32,4 +32,13 @@ export class EventsService {
 			headers: myHeader
 		});
 	};
+
+	public getEventById = (id) => {
+		let myHeader = new HttpHeaders();
+		myHeader.append('Content-Type', 'application/json');
+
+		return this.HttpClient.get(`${this.apiUrl}/event/${id}`, {
+			headers: myHeader
+		});
+	};
 }

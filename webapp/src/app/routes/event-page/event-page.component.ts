@@ -27,7 +27,8 @@ export class EventPageComponent implements OnInit {
     constructor(
         private _Activatedroute:ActivatedRoute,
         private _router:Router,
-        private headerService: HeaderService
+        private headerService: HeaderService,
+        private EventsService: EventsService,
     ){}
 
 
@@ -36,13 +37,24 @@ export class EventPageComponent implements OnInit {
 	
 		
 	};
-
+    
+    public getEvent = (id) => {
+		this.EventsService.getEventById(id).subscribe((res: any[]) => {
+		
+            this.event = res.data;
+            console.log('Event detail : ', res)    
+            //this.events = res.data;
+			
+		});
+	};
 
 	ngOnInit() {
-        this.id = this._Activatedroute.snapshot.params['id'];	
-        console.log("ID PARAM : ", this.id)
+        this.id = this._Activatedroute.snapshot.params['id'];
+        this.getEvent(this.id)
 		//console.log('	this.EventsService : ', 	this.EventsService.getEvent())
 		//this.getCurrentEvent();
-		this.headerService.setTitle('évenements');
+		this.headerService.setTitle('Événement');
+		this.headerService.isBacking = true;
+		this.headerService.isEditing = true;
 	}
 }

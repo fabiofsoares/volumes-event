@@ -1,4 +1,88 @@
 <app-header></app-header>
-<div class="container">
-	EVENT PAGE
-<div>
+<div id="display-event-container">
+  <div class="event-img"></div>
+  <div class="event-container">
+	<!-- <div class="event-status" *ngIf="isPendingEvent == true">Non diffusé</div> -->
+	<div [ngClass]="['status', event.status]">{{ event.status }}</div>
+    <div class="event-name-container">
+      <h2>{{ event.name }}</h2>
+      <h6>Crée par : Lucas Mendes</h6>
+    </div>
+
+    <div class="event-dates-container">
+      <div class="label">Dates</div>
+      <div class="datepicker-container">
+        <mat-form-field class="datepicker-event">
+          <input matInput [matDatepicker]="picker1" placeholder="Start date" [value]="event.date_start" disabled>
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="datepicker-event">
+          <input matInput [matDatepicker]="picker2" placeholder="End date" [value]="event.date_finish" disabled>
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="event-info-container">
+      <div class="label">Infos</div>
+      <div class="infos-container">
+        <div>
+          
+          {{ event.place }}
+        </div>
+        <div>
+          
+          01 02 03 04 05 / 06 03 01 03 04
+        </div>
+        <div>
+          
+          volumes.info@volumes.fr
+        </div>
+      </div>
+    </div>
+
+    <div class="event-links-container" *ngIf="isPendingEvent == false">
+      <div class="label">Liens</div>
+      <div class="links-container">
+        <div class="fb-link" *ngIf="isOnFacebook == true">
+          <fa-icon [icon]="faFacebook" size="lg"></fa-icon>
+          <a href="#">facebook.com/event-link</a>
+        </div>
+        <div class="eventbrite-link" *ngIf="isOnEventbrite == true">
+          <fa-icon [icon]="faEtsy" size="lg"></fa-icon>
+          <a href="#">eventbrite.com/event-link</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-categorie-container">
+      <div class="label">Categorie</div>
+      <div class="categorie-container">{{ event.category }}</div>
+    </div>
+
+    <div class="event-description-container">
+      <div class="label">Description</div>
+      <div class="description-container">
+			{{ event.description }}
+	  </div>
+    </div>
+
+    <div class="event-share-button-container" *ngIf="isPendingEvent == true">
+      <a [routerLink]="'/share'" class="btn share-btn">Diffuser</a>
+    </div>
+
+    <div class="circulated-events-container" *ngIf="isPendingEvent == false">
+      <div class="label">Diffusé sur</div>
+      <div class="platforms-container">
+        <div class="fb-link" *ngIf="isOnFacebook == true">
+          <fa-icon [icon]="faFacebook" size="lg"></fa-icon>
+        </div>
+        <div class="eventbrite-link" *ngIf="isOnEventbrite == true">
+          <fa-icon [icon]="faEtsy" size="lg"></fa-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
