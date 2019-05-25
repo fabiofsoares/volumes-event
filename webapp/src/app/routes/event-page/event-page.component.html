@@ -70,7 +70,7 @@
     </div>
 
     <div class="event-share-button-container" *ngIf="isPendingEvent">
-      <a [routerLink]="'/spread-event'" class="btn share-btn">Diffuser</a>
+      <a [routerLink]="['/spread-event',event._id]" class="btn share-btn">Diffuser</a>
     </div>
 
     <div class="circulated-events-container" *ngIf="isPendingEvent == false">

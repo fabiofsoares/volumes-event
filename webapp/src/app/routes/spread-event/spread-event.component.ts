@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router,ActivatedRoute } from '@angular/router';
 import { HeaderService } from '../../services/header/header.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { EventbriteService } from '../../services/eventbrite/eventbrite.service';
@@ -46,6 +47,8 @@ export class SpreadEventComponent implements OnInit {
 
 	constructor(
 		private authService: AuthService,
+		private _Activatedroute:ActivatedRoute,
+        private _router:Router,
 		private headerService: HeaderService,
 		private eventbriteService: EventbriteService
 	) {}
@@ -60,6 +63,10 @@ export class SpreadEventComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		//id de l'evenement
+		this.id = this._Activatedroute.snapshot.params['id'];
+		console.log('event id ', this.id)
+		
 		this.headerService.setTitle('Diffuser');
 		this.headerService.isBacking = true;
 	}

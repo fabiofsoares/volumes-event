@@ -74,7 +74,7 @@ export const MainRouter: Routes = [
 		canActivate: [ AuthGuard ]
 	},
 	{
-		path: 'spread-event',
+		path: 'spread-event/:id',
 		component: SpreadEventComponent,
 		canActivate: [ AuthGuard ]
 	},
