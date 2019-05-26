@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderService } from '../../services/header/header.service';
 import { EventsService } from '../../services/events/events.service';
+import { EventbriteService } from '../../services/eventbrite/eventbrite.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
@@ -16,11 +17,25 @@ import { Router } from '@angular/router';
 })
 export class CreateEventPageComponent implements OnInit {
 	public form: FormGroup;
+	private currentTicket = {
+		ticket_class: {
+			name: 'Volumes Events Ticket',
+			description: 'General Admission',
+			free: true,
+			minimum_quantity: 1,
+			maximum_quantity: 10,
+			quantity_total: 100,
+			has_pdf_ticket: true,
+			delivery_methods: 'electronic'
+		}
+	};
+	private currentEvent;
 
 	constructor(
 		private headerService: HeaderService,
 		private _location: Location,
 		private EventsService: EventsService,
+		private eventbriteService: EventbriteService,
 		private FormBuilder: FormBuilder,
 		private Router: Router
 	) {}
@@ -42,8 +57,8 @@ export class CreateEventPageComponent implements OnInit {
 	};
 
 	model = {
-		date_start: '',
-		date_finish: '',
+		date_start: '2019-06-21T00:00:00.000Z',
+		date_finish: '2019-06-20T00:00:00.000Z',
 		name: '',
 		description: '',
 		category: '',
@@ -58,10 +73,11 @@ export class CreateEventPageComponent implements OnInit {
 	faEnvelope = faEnvelope;
 	faFacebook = faFacebook;
 	faEtsy = faEtsy;
-
 	submitted = false;
 
 	public saveData = (data) => {
+		console.log('data :', data);
+
 		this.EventsService
 			.create(data)
 			.then((apiResponse) => {
@@ -76,14 +92,37 @@ export class CreateEventPageComponent implements OnInit {
 		this.Router.navigate([ 'events' ]);
 	};
 
-	public spreadEvent = async () => {
-		try {
-			const _eventSaved = await this.saveData(this.model);
-			console.log('---- diffuser ----', _eventSaved);
-		} catch (err) {
-			console.log(err);
+	public spreadEvent() {
+		// console.log('this.model :', this.model);
+		if (this.model != undefined) {
+			this.currentEvent = {
+				event: {
+					name: {
+						html: this.model.name
+					},
+					description: {
+						html: this.model.description
+					},
+					start: {
+						timezone: 'America/Los_Angeles',
+						utc: '2019-06-21T02:00:00Z'
+					},
+					end: {
+						timezone: 'America/Los_Angeles',
+						utc: '2019-06-22T02:00:00Z'
+					},
+					currency: 'EUR'
+				}
+			};
+			// console.log('this.currentEvent :', this.currentEvent);
+
+			this.eventbriteService
+				.postEvent(this.currentEvent)
+				.then(() => this.eventbriteService.postTicket(this.currentTicket))
+				.then(() => this.eventbriteService.postPublish(''))
+				.then(() => this.Router.navigate([ 'events' ]));
 		}
-	};
+	}
 
 	public backClicked = () => {
 		this._location.back();
