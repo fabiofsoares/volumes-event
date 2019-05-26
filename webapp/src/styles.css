@@ -223,7 +223,7 @@ h2 {
 }
 
 /*-- Auto width for datepicker input --*/
-#display-event-container .mat-form-field-infix {
+#event-page-container .mat-form-field-infix {
 	width: auto !important;
 }
 
@@ -232,18 +232,26 @@ h2 {
 }
 
 /*---- status colors -----*/
-.status.waiting {
+/* .status.waiting {
+	background-color: rgba(255, 221, 0, 1);
+	color: #252525;
+} */
+.status.false {
 	background-color: rgba(255, 221, 0, 1);
 	color: #252525;
 }
 
 .status.canceled {
-	background-color: #89200B;
+	background-color: #89200b;
 	color: #252525;
 }
 
-.status.approuved {
-	background-color: #036D06;
+/* .status.approuved {
+	background-color: #036d06;
+	color: #252525;
+} */
+.status.true {
+	background-color: #036d06;
 	color: #252525;
 }
 /*--- Cards ---*/

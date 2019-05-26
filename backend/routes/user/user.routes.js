@@ -29,7 +29,8 @@ class UserRouterClass {
 			} else {
 				//=> Request is valid: use controller
 				register(req.body, res)
-					.then((apiResponse) => sendApiSuccessResponse(res, 'User is registrated', apiResponse))
+					// .then((apiResponse) => sendApiSuccessResponse(res, 'User is registrated', apiResponse))
+					.then((apiResponse) => sendApiSuccessResponse(res, apiResponse))
 					.catch((apiResponse) => sendApiErrorResponse(res, 'Error during user registration', apiResponse));
 			}
 		});
@@ -48,7 +49,8 @@ class UserRouterClass {
 			} else {
 				//=> Request is valid: use controller
 				login(req.body, req, res)
-					.then((apiResponse) => sendApiSuccessResponse(res, 'User is logged', apiResponse))
+					// .then((apiResponse) => sendApiSuccessResponse(res, 'User is logged', apiResponse))
+					.then((apiResponse) => sendApiSuccessResponse(res, apiResponse))
 					.catch((apiResponse) => sendApiErrorResponse(res, 'Error during user login', apiResponse));
 			}
 		});
@@ -58,7 +60,8 @@ class UserRouterClass {
 			let token = req.cookies['VolumesToken'];
 
 			read(req.body, req, res)
-				.then((apiResponse) => sendApiSuccessResponse(res, "User's infos", token, apiResponse))
+				// .then((apiResponse) => sendApiSuccessResponse(res, "User's infos", token, apiResponse))
+				.then((apiResponse) => sendApiSuccessResponse(res, token, apiResponse))
 				.catch((apiResponse) => sendApiErrorResponse(res, 'Error during user login', apiResponse));
 		});
 	}

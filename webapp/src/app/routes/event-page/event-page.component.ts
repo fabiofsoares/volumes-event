@@ -1,66 +1,76 @@
 import { Component, OnInit } from '@angular/core';
-import { Router,ActivatedRoute } from '@angular/router';
 import { HeaderService } from '../../services/header/header.service';
-
-// Importer les interface pour configurer le formulaire
-import { FormBuilder, FormGroup, Validators, ControlContainer } from '@angular/forms';
-
-// Importer le service
 import { EventsService } from '../../services/events/events.service';
-
-//Header
-//import  Header  from '../../shared/header/header.component';
+import { EventModel } from '../../models/event.model';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faEtsy } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
 	selector: 'app-event-page',
-	template: `
-    <app-header></app-header>
-  `,
 	templateUrl: './event-page.component.html',
 	styleUrls: [ './event-page.component.css' ],
 	providers: [ EventsService, HeaderService ]
 })
 export class EventPageComponent implements OnInit {
-	public form: FormGroup;
-	public events = [];
-	
-    constructor(
-        private _Activatedroute:ActivatedRoute,
-        private _router:Router,
-        private headerService: HeaderService,
-        private EventsService: EventsService,
-    ){}
+	event: EventModel[] = [];
+	private currentEvent = [];
+	isPendingEvent = false;
+	faMapMarkerAlt = faMapMarkerAlt;
+	faPhone = faPhone;
+	faEnvelope = faEnvelope;
+	faFacebook = faFacebook;
+	faEtsy = faEtsy;
 
+	constructor(
+		private EventsService: EventsService,
+		private headerService: HeaderService,
+		private router: Router,
+		private route: ActivatedRoute
+	) {}
 
+	public getEventById = (id) => {
+		this.EventsService.getEventById(id).subscribe((eventData: EventModel[]) => {
+			this.event = eventData;
+			this.currentEvent.push(this.event);
 
-	public createCurrentEvent = () => {
-	
-		
-	};
-    
-    public getEvent = (id) => {
-		this.EventsService.getEventById(id).subscribe((res: any[]) => {
-		
-            this.event = res.data;
-            
-            if(res.data.status === 'waiting'){
-                this.isPendingEvent = true;
-            } else {
-                this.isPendingEvent = false;
-            }
+			this.currentEvent.map((item) => {
+				// console.log('item :', item);
+				this.headerService.setTitle(item.name);
 
-            console.log('Event detail : ', res)    
-            //this.events = res.data;
-			
+				if (item.status == null) {
+					item.status = false;
+				}
+
+				if (item.status == 'true') {
+					this.isPendingEvent = false;
+				}
+
+				if (item.status == 'false') {
+					this.isPendingEvent = true;
+				}
+			});
 		});
 	};
 
+	public getEventId = (id) => {
+		this.EventsService.getEventById(id).subscribe((eventData: EventModel[]) => {
+			this.event = eventData;
+		});
+	};
+
+	public goToSpreadingEvent = (eventId) => {
+		this.router.navigateByUrl('/event/' + eventId);
+	};
+
 	ngOnInit() {
-        this.id = this._Activatedroute.snapshot.params['id'];
-        this.getEvent(this.id)
-		//console.log('	this.EventsService : ', 	this.EventsService.getEvent())
-		//this.getCurrentEvent();
-		this.headerService.setTitle('Événement');
+		this.route.params.subscribe((params) => {
+			if (params['id']) {
+				this.getEventById(params['id']);
+			}
+		});
 		this.headerService.isBacking = true;
 		this.headerService.isEditing = true;
 	}

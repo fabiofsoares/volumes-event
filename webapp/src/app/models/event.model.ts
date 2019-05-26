@@ -6,4 +6,7 @@ export interface EventModel {
 	description: String;
 	category: String;
 	place: String;
+	phone: String;
+	mail: String;
+	status: String;
 }

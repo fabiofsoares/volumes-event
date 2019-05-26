@@ -41,8 +41,8 @@ export class LoginPageComponent implements OnInit {
 		this.AuthService
 			.login(this.form.value)
 			.then((apiResponse) => {
-				this.cookieService.set('userToken', apiResponse.data.userToken);
-				this.cookieService.set('userid', apiResponse.data.user._id);
+				this.cookieService.set('userToken', apiResponse.userToken);
+				this.cookieService.set('userid', apiResponse.user._id);
 				this.Router.navigate([ 'events' ]);
 				console.log('Logged', apiResponse);
 			})

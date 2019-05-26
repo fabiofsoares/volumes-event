@@ -41,4 +41,33 @@ export class EventsService {
 			headers: myHeader
 		});
 	};
+
+	public putEventStatus = (id, data: EventModel) => {
+		let myHeader = new HttpHeaders();
+		myHeader.append('Content-Type', 'application/json');
+		console.log('data to update :', data);
+
+		return this.HttpClient.put(`${this.apiUrl}/change-status/${id}`, data, {
+			headers: myHeader,
+			responseType: 'text'
+		});
+	};
+
+	// public putEventStatus = (id) => {
+	// 	let myHeader = new HttpHeaders();
+	// 	myHeader.append('Content-Type', 'application/json');
+	// 	let data = {
+	// 		date_start: '2019-06-12T00:00:00.000Z',
+	// 		date_finish: '2019-06-13T00:00:00.000Z',
+	// 		name: 'Volumes Events - Kubernetes Edition',
+	// 		description:
+	// 			"We would like to invite you to the next Search Party in our Paris office. We'll be taking a look at the do’s and don’ts of a reliable and scalable Kubernetes deployment. It wouldn’t be a Search Party though if we didn’t also mix in plenty of food, drinks and a great atmosphere!",
+	// 		status: 'approuved'
+	// 	};
+
+	// 	return this.HttpClient.put(`${this.apiUrl}/change-status/${id}`, data, {
+	// 		headers: myHeader,
+	// 		responseType: 'text'
+	// 	});
+	// };
 }

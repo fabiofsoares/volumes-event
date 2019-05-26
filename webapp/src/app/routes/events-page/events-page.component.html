@@ -1,60 +1,20 @@
 <app-header></app-header>
 <div class="container">
-
 	<div class="button-container button-container">
 		<a [routerLink]="'/create-event'" class="btn btn-secondary">Créer un évenement</a>
 	</div>
 
 	<div class="events-container">
-		
-		<div class="event" *ngFor="let event of events">
-			<a [routerLink]="['/event', event._id]">
-				<div [ngClass]="['event-content', event.status]">
-					<div class="image" style="background-image:url('../../../assets/img/event-image.jpg')"></div>
-					<div [ngClass]="['status', event.status]">
-						{{ event.status }}
-					</div>
-					<div class="infos">
-						<h3>{{ event.name }}</h3>
-						<p>{{ event.date_start | date:'dd/MM/yy - HH:mm' }} </p>
-					</div>
+		<div class="event" *ngFor="let event of events" (click)="goToEvent(event._id)">
+			<div [ngClass]="['event-content', event.status]">
+				<div class="image" style="background-image:url('../../../assets/img/event-image.jpg')"></div>
+				<div [ngClass]="['status', event.status]" [innerHtml]='event.status == "false" ? "Waiting" : "Approuved"'>
 				</div>
-			</a>
+				<div class="infos">
+					<h3>{{ event.name }}</h3>
+					<p>{{ event.date_start | date:'dd/MM/yy - HH:mm' }} </p>
+				</div>
+			</div>
 		</div>
-
 	</div>
-
 </div>
-<!-- <form [formGroup]="form" (submit)="createCurrentEvent()">
-	<div>
-		<label>Start Date</label>
-		<input type="date" name="date_start" formControlName="date_start">
-	</div>
-
-	<div>
-		<label>Finish Date</label>
-		<input type="date" name="date_finish" formControlName="date_finish">
-	</div>
-
-	<div>
-		<label>Name</label>
-		<input type="text" name="name" formControlName="name">
-	</div>
-
-	<div>
-		<label>Description</label>
-		<input type="text" name="description" formControlName="description">
-	</div>
-
-	<div>
-		<label>Category</label>
-		<input type="text" name="category" formControlName="category">
-	</div>
-
-	<div>
-		<label>Place</label>
-		<input type="text" name="place" formControlName="place">
-	</div>
-
-	<button type="submit" [disabled]="!form.valid">Create</button>
-</form> -->
