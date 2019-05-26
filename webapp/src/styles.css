@@ -223,7 +223,8 @@ h2 {
 }
 
 /*-- Auto width for datepicker input --*/
-#event-page-container .mat-form-field-infix {
+#event-page-container .mat-form-field-infix,
+#create-event-container .mat-form-field-infix {
 	width: auto !important;
 }
 
