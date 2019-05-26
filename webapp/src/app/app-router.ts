@@ -60,8 +60,8 @@ export const MainRouter: Routes = [
 	},
 	{
 		path: 'display-event',
-		component: DisplayEventPageComponent,
-		canActivate: [ AuthGuard ]
+		component: DisplayEventPageComponent
+		// canActivate: [ AuthGuard ]
 	},
 	{
 		path: 'edit-event',

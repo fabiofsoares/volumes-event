@@ -4,9 +4,9 @@
 }
 
 #display-event-container .event-img {
-	width: 100%;
-	height: 25vh;
-	background: url('../../../assets/img/event.jpg') no-repeat center fixed;
+	width: auto;
+	height: 10rem;
+	background: url('../../../assets/img/yoga.jpg') no-repeat;
 	background-size: cover;
 }
 

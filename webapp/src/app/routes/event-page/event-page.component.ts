@@ -46,10 +46,12 @@ export class EventPageComponent implements OnInit {
 
 				if (item.status == 'true') {
 					this.isPendingEvent = false;
+					this.headerService.isEditing = false;
 				}
 
 				if (item.status == 'false') {
 					this.isPendingEvent = true;
+					this.headerService.isEditing = true;
 				}
 			});
 		});
@@ -76,6 +78,5 @@ export class EventPageComponent implements OnInit {
 			}
 		});
 		this.headerService.isBacking = true;
-		this.headerService.isEditing = true;
 	}
 }
