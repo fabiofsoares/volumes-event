@@ -3,6 +3,7 @@ import { EventModel } from '../../models/event.model';
 import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root'
@@ -10,7 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class EventsService {
 	private apiUrl = `${environment.apiUrl}/events`;
 
-	constructor(private HttpClient: HttpClient, private cookieService: CookieService) {}
+	constructor(private HttpClient: HttpClient, private cookieService: CookieService, private Router: Router) {}
 
 	public create = (data: EventModel): Promise<any> => {
 		let myHeader = new HttpHeaders();
@@ -51,6 +52,19 @@ export class EventsService {
 			headers: myHeader,
 			responseType: 'text'
 		});
+	};
+
+	public deleteEvent = (id): Promise<any> => {
+		let myHeader = new HttpHeaders();
+		myHeader.append('Content-Type', 'application/json');
+
+		return this.HttpClient
+			.delete(`${this.apiUrl}/event/${id}`, {
+				headers: myHeader
+			})
+			.toPromise()
+			.then((apiResponse) => Promise.resolve(apiResponse))
+			.then(() => this.Router.navigate([ 'events' ]));
 	};
 
 	// public putEventStatus = (id) => {

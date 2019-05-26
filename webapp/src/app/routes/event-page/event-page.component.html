@@ -66,8 +66,13 @@
       <div class="description-container">{{ event.description }}</div>
     </div>
 
-    <div class="event-share-button-container" *ngIf="isPendingEvent == true" (click)="goToSpreadingEvent(event._id)">
-      <a [routerLink]="['/spread-event',event._id]" class="btn share-btn">Diffuser</a>
+    <div class="action-btn-container" *ngIf="isPendingEvent == true">
+      <div class="event-share-button-container" (click)="cancelEvent(event._id)">
+        <a class="btn share-btn">Annuler</a>
+      </div>
+      <div class="event-share-button-container" (click)="goToSpreadingEvent(event._id)">
+        <a [routerLink]="['/spread-event',event._id]" class="btn share-btn">Diffuser</a>
+      </div>
     </div>
 
     <div class="circulated-events-container" *ngIf="isPendingEvent == false">

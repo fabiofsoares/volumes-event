@@ -116,7 +116,8 @@ class EventRouterClass {
 			}
 
 			deleteEvent(req.params.id)
-				.then((apiRes) => sendApiSuccessResponse(res, 'Event is deleted', apiRes))
+				// .then((apiRes) => sendApiSuccessResponse(res, 'Event is deleted', apiRes))
+				.then((apiRes) => sendApiSuccessResponse(res, apiRes))
 				.catch((apiErr) => sendApiErrorResponse(res, 'Error during deletion', apiErr));
 		});
 

@@ -20,7 +20,8 @@ const createEvent = (body, userId) => {
 			place: body.place,
 			phone: body.phone,
 			mail: body.mail,
-			status: _status[0]
+			status: body.status
+			// status: _status[0]
 		};
 
 		EventModel.create(newEvent)
@@ -101,8 +102,10 @@ const deleteEvent = (id) => {
 			if (error) return reject(error);
 			else if (!event) return reject('Unknown Event');
 			else {
-				event.remove();
-				return resolve('Event deleted');
+				event
+					.remove()
+					.then((mongoResponse) => resolve(mongoResponse))
+					.catch((mongoResponse) => reject(mongoResponse));
 			}
 		});
 	});

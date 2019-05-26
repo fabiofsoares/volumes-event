@@ -65,6 +65,10 @@ export class EventPageComponent implements OnInit {
 		this.router.navigateByUrl('/event/' + eventId);
 	};
 
+	public cancelEvent = (id) => {
+		this.EventsService.deleteEvent(id);
+	};
+
 	ngOnInit() {
 		this.route.params.subscribe((params) => {
 			if (params['id']) {
